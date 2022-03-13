@@ -1,0 +1,7 @@
+.header {
+  background: var(--COLOR-STONE);
+  box-shadow: 0 0.1rem 0.4rem var(--COLOR-TEXT-500);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}

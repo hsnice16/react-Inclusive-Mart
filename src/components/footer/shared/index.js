@@ -1,0 +1,1 @@
+export { FooterHeading } from "./FooterHeading";

@@ -1,0 +1,69 @@
+/** mockman-style **/
+@import url("https://unpkg.com/mockman-js@latest/dist/style.css");
+
+/** font-awesome **/
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+/** poshui-components **/
+@import url("https://cdn.jsdelivr.net/gh/hsnice16/PoshUI-Components@development/css/main.min.css");
+
+:root {
+  --COLOR-BACKGROUND: var(--COLOR-SLATE-50);
+
+  --COLOR-PRIMARY: var(--COLOR-RED-500);
+  --COLOR-PRIMARY-50: var(--COLOR-RED-50);
+
+  --COLOR-TEXT-300: var(--COLOR-SLATE-300);
+  --COLOR-TEXT-500: var(--COLOR-SLATE-500);
+  --COLOR-TEXT-600: var(--COLOR-SLATE-600);
+  --COLOR-TEXT-800: var(--COLOR-SLATE-800);
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--COLOR-BACKGROUND);
+  font-size: 1.6rem;
+}
+
+/** Container **/
+
+.container {
+  margin: auto;
+  max-width: 140rem;
+}
+
+/** Link **/
+
+.link {
+  color: var(--COLOR-STONE);
+  font-weight: bold;
+  position: relative;
+}
+
+.link::after {
+  background: var(--COLOR-PRIMARY);
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  transition: width 0.3s, left 0.3s;
+  width: 0;
+}
+
+.link:hover::after {
+  left: 0;
+  width: 100%;
+}
+
+/** Media Query **/
+
+@media only screen and (max-width: 40em) {
+  html {
+    font-size: 60%;
+  }
+}

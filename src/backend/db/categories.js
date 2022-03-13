@@ -8,20 +8,34 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    categoryName: "Clothing",
+    img: {
+      altText: "a girl wearing a marvel printed hoody",
+      url: "https://rukminim2.flixcart.com/image/800/960/kwdv3bk0/sweatshirt/g/n/1/6-7-years-bon7948-g-bonkids-original-imag92umght4jjh5.jpeg?q=50",
+    },
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "Computers",
+    img: {
+      altText: "spiderman laptop skin",
+      url: "https://rukminim2.flixcart.com/image/416/416/kay9bbk0/laptop-skin-decal/w/f/m/marvel-spider-man-laptop-skin-laptop-sticker-hd-quality-laptop-original-imafsetzcdx6bwzy.jpeg?q=70",
+    },
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    categoryName: "Books",
+    img: {
+      altText: "avenger endgame book cover",
+      url: "https://rukminim2.flixcart.com/image/416/416/kqjtd3k0/book/2/q/8/marvel-die-cut-classic-avengers-endgame-original-imag4jhf7fg6dts4.jpeg?q=70",
+    },
+  },
+  {
+    _id: uuid(),
+    categoryName: "Gaming",
+    img: {
+      altText: "guardians of the galaxy ps4 box cover",
+      url: "https://rukminim2.flixcart.com/image/416/416/kv6zvrk0/physical-game/z/s/v/no-standard-marvel-s-guardians-of-the-galaxy-physical-disc-ps4-original-imag85jpsrm6fvnu.jpeg?q=70",
+    },
   },
 ];

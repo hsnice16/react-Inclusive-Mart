@@ -1,0 +1,34 @@
+.category-card {
+  cursor: pointer;
+  flex-direction: column;
+  width: 30rem;
+}
+
+.loading-category-card {
+  cursor: unset;
+}
+
+.loading-category-card > span {
+  background: var(--COLOR-BACKGROUND);
+  box-shadow: none;
+}
+
+.loading-category-card > h2 {
+  background-color: var(--COLOR-BACKGROUND);
+  height: 3rem;
+  width: 20rem;
+}
+
+/** Media Query **/
+
+@media only screen and (max-width: 43em) {
+  .category-card {
+    max-width: 22rem;
+  }
+}
+
+@media only screen and (max-width: 28em) {
+  .category-card {
+    max-width: 18rem;
+  }
+}

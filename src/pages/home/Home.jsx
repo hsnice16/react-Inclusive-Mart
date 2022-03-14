@@ -5,6 +5,7 @@ import { heroImg } from "../../assets";
 import { useDocumentTitle } from "../../custom-hooks";
 
 import { ShopInYourCategorySection } from "./ShopInYourCategorySection";
+import { ShopNowSection } from "./ShopNowSection";
 
 const Home = () => {
   useDocumentTitle("Online Shopping site for Marvel fans, Get Your Best Deal");
@@ -21,6 +22,7 @@ const Home = () => {
       </div>
 
       <ShopInYourCategorySection />
+      <ShopNowSection />
     </main>
   );
 };

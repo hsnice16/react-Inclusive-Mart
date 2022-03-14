@@ -5,7 +5,7 @@ const CategoryCard = ({ img: { altText, url }, categoryName, loading }) => {
   return loading ? (
     <div className="card category-card loading-category-card">
       <span className="img img-round m-auto my-2 category-card-img"></span>
-      <h2 className="m-auto mb-2 category-card-heading"></h2>
+      <span className="m-auto mb-2 category-card-heading"></span>
     </div>
   ) : (
     <div className="card category-card shadow-light shadow-slate-hover">

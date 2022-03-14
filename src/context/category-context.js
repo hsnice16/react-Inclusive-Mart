@@ -1,27 +1,23 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
+
 import {
-  categoriesReducer,
+  sharedInitialReducerState,
+  sharedReducer,
   ACTION_TYPE_ERROR,
   ACTION_TYPE_LOADING,
   ACTION_TYPE_SUCCESS,
-} from "./utils";
-
-const initialCategories = {
-  data: null,
-  error: null,
-  status: null,
-};
+} from "../reducer";
 
 const CategoryContext = createContext({
-  categories: initialCategories,
+  categories: sharedInitialReducerState,
   dispatch: () => {},
 });
 
 const CategoryProvider = ({ children }) => {
   const [categories, dispatch] = useReducer(
-    categoriesReducer,
-    initialCategories
+    sharedReducer,
+    sharedInitialReducerState
   );
 
   useEffect(() => {

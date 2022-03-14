@@ -1,5 +1,5 @@
 .hero-img-container {
-  background: var(--COLOR-BACKGROUND);
+  background: var(--COLOR-WHITE);
   border-radius: 0.5rem;
   overflow: hidden;
 }

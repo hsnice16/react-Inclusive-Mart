@@ -1,9 +1,22 @@
 import { Response } from "miragejs";
+import { getShuffledArray } from "../../utils";
 
 /**
  * All the routes related to Product are present here.
  * These are Publicly accessible routes.
  * */
+
+/**
+ * This handler handles gets all products in the db.
+ * send GET Request at /api/products/home
+ */
+
+export const getAllHomeProductsHandler = function () {
+  const shuffledProducts = getShuffledArray(this.db.products);
+  const firstFiveShuffledProducts = shuffledProducts.slice(0, 5);
+
+  return new Response(200, {}, { products: firstFiveShuffledProducts });
+};
 
 /**
  * This handler handles gets all products in the db.

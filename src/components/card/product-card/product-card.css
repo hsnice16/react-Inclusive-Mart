@@ -1,0 +1,17 @@
+.btn-add-to-cart {
+  color: var(--COLOR-TEXT-800);
+  font-weight: bold;
+  margin: 0;
+}
+
+.btn-add-to-cart:hover {
+  background: var(--COLOR-YELLOW-600);
+}
+
+.loading-product-card > span {
+  background: var(--COLOR-BACKGROUND);
+}
+
+.loading-product-card > span:nth-child(4) {
+  width: 12rem;
+}

@@ -14,6 +14,7 @@ import {
   getCategoryHandler,
 } from "./backend/controllers/CategoryController";
 import {
+  getAllHomeProductsHandler,
   getAllProductsHandler,
   getProductHandler,
 } from "./backend/controllers/ProductController";
@@ -62,6 +63,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/auth/login", loginHandler.bind(this));
 
       // products routes (public)
+      this.get("/products/home", getAllHomeProductsHandler.bind(this));
       this.get("/products", getAllProductsHandler.bind(this));
       this.get("/products/:productId", getProductHandler.bind(this));
 

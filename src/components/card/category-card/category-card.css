@@ -10,11 +10,13 @@
 
 .loading-category-card > span {
   background: var(--COLOR-BACKGROUND);
+}
+
+.loading-category-card > span:nth-child(1) {
   box-shadow: none;
 }
 
-.loading-category-card > h2 {
-  background-color: var(--COLOR-BACKGROUND);
+.loading-category-card > span:nth-child(2) {
   height: 3rem;
   width: 20rem;
 }

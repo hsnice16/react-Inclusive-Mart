@@ -1,7 +1,7 @@
 const sharedInitialReducerState = {
   data: null,
   error: null,
-  status: null,
+  status: "loading",
 };
 
 export { sharedInitialReducerState };

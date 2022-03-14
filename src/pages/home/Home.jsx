@@ -2,12 +2,13 @@ import React from "react";
 import "./home.css";
 
 import { heroImg } from "../../assets";
-import { useDocumentTitle } from "../../custom-hooks";
+import { useDocumentTitle, useScrollToTop } from "../../custom-hooks";
 
 import { ShopInYourCategorySection } from "./ShopInYourCategorySection";
 import { ShopNowSection } from "./ShopNowSection";
 
 const Home = () => {
+  useScrollToTop();
   useDocumentTitle("Online Shopping site for Marvel fans, Get Your Best Deal");
 
   return (

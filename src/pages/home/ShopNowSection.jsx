@@ -1,42 +1,16 @@
-import React, { useEffect, useReducer } from "react";
-import axios from "axios";
 import { HomeHeading } from "./shared";
-import { getEmptyArrayOfObjects, ROUTE_HOME } from "../../utils";
 import { ProductCard } from "../../components";
+import { useAsync } from "../../custom-hooks";
+
 import {
-  sharedInitialReducerState,
-  sharedReducer,
-  ACTION_TYPE_ERROR,
-  ACTION_TYPE_LOADING,
-  ACTION_TYPE_SUCCESS,
-} from "../../reducer";
+  getEmptyArrayOfObjects,
+  ROUTE_HOME,
+  API_TO_GET_HOME_PRODUCTS,
+} from "../../utils";
 
 const ShopNowSection = () => {
-  const [products, dispatch] = useReducer(
-    sharedReducer,
-    sharedInitialReducerState
-  );
-  const { status, data } = products;
-
-  useEffect(() => {
-    (async () => {
-      dispatch({ type: ACTION_TYPE_LOADING });
-
-      try {
-        const response = await axios.get("/api/products/home");
-
-        dispatch({
-          type: ACTION_TYPE_SUCCESS,
-          payload: response.data.products,
-        });
-      } catch (error) {
-        dispatch({
-          type: ACTION_TYPE_ERROR,
-          payload: "Error: Something is Wrong",
-        });
-      }
-    })();
-  }, []);
+  const { state: products } = useAsync(API_TO_GET_HOME_PRODUCTS);
+  const { data, status } = products;
 
   return (
     <section className="py-2">

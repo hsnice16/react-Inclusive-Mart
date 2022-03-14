@@ -14,6 +14,7 @@ const ProductsFilterList = ({ forScreenSize }) => {
   let categoryOptions = [];
   let subCategoryOptions = [];
   let priceSortingOptions = [];
+  let ratingsSortingOptions = [];
 
   if (status === "success") {
     categoryOptions = data.reduce(
@@ -26,6 +27,7 @@ const ProductsFilterList = ({ forScreenSize }) => {
     ).subCategories;
 
     priceSortingOptions = ["Low to High", "High to Low"];
+    ratingsSortingOptions = ["4★ & above", "3★ & above"];
   }
 
   return [status, productStatus].includes("loading") ? (
@@ -61,14 +63,6 @@ const ProductsFilterList = ({ forScreenSize }) => {
       </div>
 
       <FilterUL
-        headingText="Sort by - Price"
-        inputType="radio"
-        inputName="price"
-        optionsList={priceSortingOptions}
-        forScreenSize={forScreenSize}
-      />
-
-      <FilterUL
         headingText="Categories"
         inputType="checkbox"
         inputName="category"
@@ -77,28 +71,46 @@ const ProductsFilterList = ({ forScreenSize }) => {
       />
 
       <FilterUL
-        headingText="Sub-Category"
+        headingText="Sub Categories"
         inputType="checkbox"
         inputName="subCategory"
         optionsList={subCategoryOptions}
         forScreenSize={forScreenSize}
       />
 
+      <FilterUL
+        headingText="Ratings"
+        inputType="radio"
+        inputName="ratings"
+        optionsList={ratingsSortingOptions}
+        forScreenSize={forScreenSize}
+      />
+
+      <FilterUL
+        headingText="Sort by - Price"
+        inputType="radio"
+        inputName="price"
+        optionsList={priceSortingOptions}
+        forScreenSize={forScreenSize}
+      />
+
       <ul className="p-2">
         <FilterULHead headingText="Price Range" />
 
-        <li className="flex justify-c-sb my-0p5">
-          {["all", "<500", "<1000", "<1500", "<2000"].map((ratingValue) => (
+        <li className="flex justify-c-sb my-0p5 ml-1">
+          {["all", "<1000", "<2000"].map((ratingValue) => (
             <span key={ratingValue} className="fs-1p5 fw-bold">
               {ratingValue}
             </span>
           ))}
         </li>
 
-        <li className="my-0p5">
+        <li className="my-0p5 ml-1">
           <input
             type="range"
-            min="100"
+            min="0"
+            max="2000"
+            value="1000"
             step="100"
             className="cursor-ptr w-100pct"
           />

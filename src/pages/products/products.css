@@ -1,8 +1,7 @@
 .filter-container {
   background: var(--COLOR-WHITE);
   box-shadow: 0 0.1rem 0.4rem var(--COLOR-TEXT-500);
-  height: 110vh;
-  overflow-y: auto;
+  height: max-content;
   padding: 3rem 0;
   width: 24rem;
 }

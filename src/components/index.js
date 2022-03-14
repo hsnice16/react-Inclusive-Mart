@@ -4,6 +4,6 @@ export { ProductCard } from "./card/product-card/ProductCard";
 export { Footer } from "./footer/Footer";
 export { Header } from "./header/Header";
 
-export { ClearAllButton } from "./products/ClearAllButton";
-export { FilterUL } from "./products/FilterUL";
-export { FilterULHead } from "./products/FilterULHead";
+export { ClearAllButton } from "./products-filter-list/ClearAllButton";
+export { FilterUL } from "./products-filter-list/FilterUL";
+export { FilterULHead } from "./products-filter-list/FilterULHead";

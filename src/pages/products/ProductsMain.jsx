@@ -1,21 +1,55 @@
+import { useEffect, useState } from "react";
 import { ProductsFilterList } from "./shared";
 import { ProductCard } from "../../components";
 import { useProducts } from "../../context";
 import { getEmptyArrayOfObjects } from "../../utils";
+import { useFilteredData } from "../../custom-hooks";
+import { noProducts } from "../../assets";
 
 const ProductsMain = () => {
   const { products } = useProducts();
-  const { data, status } = products;
+  const { status } = products;
+  const filteredData = useFilteredData();
+
+  const [showMdFilter, setShowMdFilter] = useState(false);
+  const [toggleMdFilter, setToggleMdFilter] = useState(false);
+  useEffect(() => {
+    {
+      /* 640 = 40em in products.css */
+    }
+
+    if (window.innerWidth <= 640) {
+      setShowMdFilter(true);
+    } else {
+      setShowMdFilter(false);
+    }
+  }, [window.innerWidth]);
+
+  const handleMdFilterToggling = () => {
+    setToggleMdFilter((prevToggleValue) => !prevToggleValue);
+  };
 
   return (
-    <main className="p-3">
-      <button className="btn-md-filter filter-md-position shadow-light shadow-slate-hover">
+    <main className="products-main">
+      <button
+        onClick={handleMdFilterToggling}
+        className="btn-md-filter filter-md-position shadow-light shadow-slate-hover"
+      >
         <i className="fas fa-filter"></i> Filter
       </button>
 
-      <div className="filter-md-container filter-md-position">
-        <ProductsFilterList forScreenSize="md" />
-      </div>
+      {showMdFilter && (
+        <div
+          className={`filter-md-container filter-md-position ${
+            toggleMdFilter ? "show-md-filter" : ""
+          }`}
+        >
+          <ProductsFilterList
+            forScreenSize="md"
+            handleMdFilterToggling={handleMdFilterToggling}
+          />
+        </div>
+      )}
 
       <section>
         <ul className="flex flex-wrap my-3">
@@ -27,10 +61,16 @@ const ProductsMain = () => {
             ))}
 
           {status === "success" &&
-            data.map(({ _id, ...details }) => (
-              <li key={_id} className="m-0p5">
-                <ProductCard details={details} />
-              </li>
+            (filteredData.length > 0 ? (
+              filteredData.map(({ _id, ...details }) => (
+                <li key={_id} className="m-0p5">
+                  <ProductCard details={details} />
+                </li>
+              ))
+            ) : (
+              <div className="no-products-img-container">
+                <img src={noProducts} alt="empty box, showing no products" />
+              </div>
             ))}
         </ul>
       </section>

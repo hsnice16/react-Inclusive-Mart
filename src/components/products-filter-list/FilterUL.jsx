@@ -8,30 +8,36 @@ const FilterUL = ({
   inputName,
   optionsList,
   forScreenSize,
+  isChecked,
+  handleChange,
 }) => (
   <ul>
     <FilterULHead headingText={headingText} />
 
-    {optionsList.map((option) => {
-      const inputId = `${
-        forScreenSize === "md" ? "md-" : ""
-      }${getFormattedInputId(option)}`;
+    <form>
+      {optionsList.map((option) => {
+        const inputId = `${
+          forScreenSize === "md" ? "md-" : ""
+        }${getFormattedInputId(option)}`;
 
-      return (
-        <li key={inputId} className="my-0p5 ml-1">
-          <label className="cursor-ptr" htmlFor={inputId}>
-            <input
-              className="cursor-ptr mr-1"
-              type={inputType}
-              name={inputName}
-              id={inputId}
-              value={option}
-            />
-            {option}
-          </label>
-        </li>
-      );
-    })}
+        return (
+          <li key={inputId} className="my-0p5 ml-1">
+            <label className="cursor-ptr" htmlFor={inputId}>
+              <input
+                className="cursor-ptr mr-1"
+                type={inputType}
+                name={inputName}
+                id={inputId}
+                value={option}
+                checked={isChecked(option)}
+                onChange={handleChange}
+              />
+              {option}
+            </label>
+          </li>
+        );
+      })}
+    </form>
   </ul>
 );
 
@@ -41,6 +47,8 @@ FilterUL.propTypes = {
   inputName: PropTypes.string,
   optionsList: PropTypes.arrayOf(PropTypes.string),
   forScreenSize: PropTypes.string,
+  isChecked: PropTypes.func,
+  handleChange: PropTypes.func,
 };
 
 FilterUL.defaultProps = {
@@ -49,6 +57,8 @@ FilterUL.defaultProps = {
   inputName: "",
   optionsList: [""],
   forScreenSize: "",
+  isChecked: () => {},
+  handleChange: () => {},
 };
 
 export { FilterUL };

@@ -1,16 +1,35 @@
-import { createContext, useContext } from "react";
-import { sharedInitialReducerState } from "../reducer";
+import { createContext, useContext, useReducer } from "react";
+import { useSearchParams } from "react-router-dom";
+import {
+  sharedInitialReducerState,
+  filterInitialReducerState,
+  filterReducer,
+} from "../reducer";
 import { useAsync } from "../custom-hooks";
-import { API_TO_GET_ALL_PRODUCTS } from "../utils";
+import {
+  API_TO_GET_ALL_PRODUCTS,
+  getFilterStateFromSearchParams,
+} from "../utils";
 
 const ProductsContext = createContext({
-  products: sharedInitialReducerState,
-  dispatch: () => {},
+  products: { ...sharedInitialReducerState, ...filterInitialReducerState },
+  asyncDispatch: () => {},
+  filterDispatch: () => {},
 });
 
 const ProductsProvider = ({ children }) => {
-  const { state: products, dispatch } = useAsync(API_TO_GET_ALL_PRODUCTS);
-  const value = { products, dispatch };
+  const { state: asyncState, dispatch: asyncDispatch } = useAsync(
+    API_TO_GET_ALL_PRODUCTS
+  );
+  const [searchParams] = useSearchParams();
+
+  const [filterState, filterDispatch] = useReducer(
+    filterReducer,
+    getFilterStateFromSearchParams([...searchParams])
+  );
+
+  const products = { ...asyncState, ...filterState };
+  const value = { products, asyncDispatch, filterState, filterDispatch };
 
   return (
     <ProductsContext.Provider value={value}>

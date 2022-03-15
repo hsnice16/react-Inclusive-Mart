@@ -1,36 +1,40 @@
 import PropTypes from "prop-types";
-
 import { ClearAllButton, FilterUL, FilterULHead } from "../../../components";
 import { useCategory, useProducts } from "../../../context";
+import { getCategoriesList, getSubCategoriesList } from "../../../utils";
+import { useFilterHandler } from "../../../custom-hooks";
 
-const ProductsFilterList = ({ forScreenSize }) => {
+const ProductsFilterList = ({ forScreenSize, handleMdFilterToggling }) => {
   const { categories } = useCategory();
-  const { data, status } = categories;
+  const { data, status: categoriesStatus } = categories;
+
+  const { products } = useProducts();
+  const {
+    status: productStatus,
+    filterByCategory,
+    filterBySubCategories,
+    filterByRatings,
+    filterByPriceRange,
+    sortByPrice,
+  } = products;
+
+  const ratingsOptionsList = ["4★ & above", "3★ & above"];
+  const priceSortingOptionsList = ["Low to High", "High to Low"];
+  const [categoriesOptionsList, subCategoriesOptionsList] =
+    categoriesStatus === "success"
+      ? [getCategoriesList(data), getSubCategoriesList(data, filterByCategory)]
+      : [[], []];
 
   const {
-    products: { status: productStatus },
-  } = useProducts();
+    handleCategoryRadioChange,
+    handleSubCategoryCheckBoxChange,
+    handleRatingsCheckBoxChange,
+    handleSortByPriceRadioChange,
+    handlePriceRangeChange,
+    handleResetBtnClick,
+  } = useFilterHandler();
 
-  let categoryOptions = [];
-  let subCategoryOptions = [];
-  let priceSortingOptions = [];
-  let ratingsSortingOptions = [];
-
-  if (status === "success") {
-    categoryOptions = data.reduce(
-      (resultantList, { categoryName }) => [...resultantList, categoryName],
-      []
-    );
-
-    subCategoryOptions = data.find(
-      ({ categoryName }) => categoryName === "Clothing"
-    ).subCategories;
-
-    priceSortingOptions = ["Low to High", "High to Low"];
-    ratingsSortingOptions = ["4★ & above", "3★ & above"];
-  }
-
-  return [status, productStatus].includes("loading") ? (
+  return [categoriesStatus, productStatus].includes("loading") ? (
     <>
       <div className="loading-filter-list">
         <span className="fs-2 h-3p5 w-100pct"></span>
@@ -52,67 +56,83 @@ const ProductsFilterList = ({ forScreenSize }) => {
 
         {forScreenSize === "md" ? (
           <div>
-            <ClearAllButton forScreenSize={forScreenSize} />
-            <button className="bg-unset border-none fw-normal link">
+            <ClearAllButton
+              forScreenSize={forScreenSize}
+              handleClick={handleResetBtnClick}
+            />
+            <button
+              onClick={handleMdFilterToggling}
+              className="bg-unset border-none fw-normal link"
+            >
               Close
             </button>
           </div>
         ) : (
-          <ClearAllButton />
+          <ClearAllButton handleClick={handleResetBtnClick} />
         )}
       </div>
 
       <FilterUL
         headingText="Categories"
-        inputType="checkbox"
+        inputType="radio"
         inputName="category"
-        optionsList={categoryOptions}
+        optionsList={categoriesOptionsList}
         forScreenSize={forScreenSize}
+        isChecked={(option) => filterByCategory === option}
+        handleChange={handleCategoryRadioChange}
       />
 
       <FilterUL
-        headingText="Sub Categories"
+        headingText={`Sub ${
+          subCategoriesOptionsList.length > 1 ? "Categories" : "Category"
+        }`}
         inputType="checkbox"
         inputName="subCategory"
-        optionsList={subCategoryOptions}
+        optionsList={subCategoriesOptionsList}
         forScreenSize={forScreenSize}
+        isChecked={(option) => filterBySubCategories.includes(option)}
+        handleChange={handleSubCategoryCheckBoxChange}
       />
 
       <FilterUL
         headingText="Ratings"
-        inputType="radio"
+        inputType="checkbox"
         inputName="ratings"
-        optionsList={ratingsSortingOptions}
+        optionsList={ratingsOptionsList}
         forScreenSize={forScreenSize}
+        isChecked={(option) => filterByRatings.includes(option)}
+        handleChange={handleRatingsCheckBoxChange}
       />
 
       <FilterUL
         headingText="Sort by - Price"
         inputType="radio"
         inputName="price"
-        optionsList={priceSortingOptions}
+        optionsList={priceSortingOptionsList}
         forScreenSize={forScreenSize}
+        isChecked={(option) => sortByPrice === option}
+        handleChange={handleSortByPriceRadioChange}
       />
 
       <ul className="p-2">
         <FilterULHead headingText="Price Range" />
 
         <li className="flex justify-c-sb my-0p5 ml-1">
-          {["all", "<1000", "<2000"].map((ratingValue) => (
-            <span key={ratingValue} className="fs-1p5 fw-bold">
-              {ratingValue}
-            </span>
-          ))}
+          <span className="fs-1p5 fw-bold">all</span>
+          <span className="fs-1p5 fw-bold">
+            {filterByPriceRange > 0 && `< ${filterByPriceRange}`}
+          </span>
         </li>
 
         <li className="my-0p5 ml-1">
           <input
             type="range"
             min="0"
-            max="2000"
-            value="1000"
-            step="100"
+            max="15000"
+            value={filterByPriceRange}
+            step="200"
             className="cursor-ptr w-100pct"
+            onChange={handlePriceRangeChange}
           />
         </li>
       </ul>
@@ -122,10 +142,12 @@ const ProductsFilterList = ({ forScreenSize }) => {
 
 ProductsFilterList.propTypes = {
   forScreenSize: PropTypes.string,
+  handleMdFilterToggling: PropTypes.func,
 };
 
 ProductsFilterList.defaultProps = {
   forScreenSize: "",
+  handleMdFilterToggling: () => {},
 };
 
 export { ProductsFilterList };

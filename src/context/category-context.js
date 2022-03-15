@@ -1,13 +1,7 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
-import axios from "axios";
-
-import {
-  sharedInitialReducerState,
-  sharedReducer,
-  ACTION_TYPE_ERROR,
-  ACTION_TYPE_LOADING,
-  ACTION_TYPE_SUCCESS,
-} from "../reducer";
+import { createContext, useContext } from "react";
+import { useAsync } from "../custom-hooks";
+import { API_TO_GET_ALL_CATEGORIES } from "../utils";
+import { sharedInitialReducerState } from "../reducer";
 
 const CategoryContext = createContext({
   categories: sharedInitialReducerState,
@@ -15,31 +9,7 @@ const CategoryContext = createContext({
 });
 
 const CategoryProvider = ({ children }) => {
-  const [categories, dispatch] = useReducer(
-    sharedReducer,
-    sharedInitialReducerState
-  );
-
-  useEffect(() => {
-    (async () => {
-      dispatch({ type: ACTION_TYPE_LOADING });
-
-      try {
-        const response = await axios.get("/api/categories");
-
-        dispatch({
-          type: ACTION_TYPE_SUCCESS,
-          payload: response.data.categories,
-        });
-      } catch (error) {
-        dispatch({
-          type: ACTION_TYPE_ERROR,
-          payload: "Error: Something is Wrong",
-        });
-      }
-    })();
-  }, []);
-
+  const { state: categories, dispatch } = useAsync(API_TO_GET_ALL_CATEGORIES);
   const value = { categories, dispatch };
 
   return (

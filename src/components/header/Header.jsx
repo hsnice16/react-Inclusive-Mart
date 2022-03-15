@@ -1,11 +1,11 @@
-import { header } from "./header.module.css";
+import "./header.css";
 
 import { Navbar } from "./Navbar";
 import { NavbarMd } from "./NavbarMd";
 
 const Header = () => {
   return (
-    <header className={header}>
+    <header>
       <Navbar />
       <NavbarMd />
     </header>

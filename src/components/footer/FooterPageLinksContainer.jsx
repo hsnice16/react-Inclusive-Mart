@@ -7,8 +7,8 @@ const FooterPageLinksContainer = ({ pageLinks }) => (
     <FooterHeading headingText="Quick Links" />
 
     <ul className="mx-1">
-      {pageLinks.map(({ id, linkFor, url }, index) => (
-        <li key={id} className={index % 2 !== 0 ? "my-1" : ""}>
+      {pageLinks.map(({ _id, linkFor, url }, index) => (
+        <li key={_id} className={index % 2 !== 0 ? "my-1" : ""}>
           <Link to={url} className="link">
             {linkFor}
           </Link>
@@ -21,7 +21,7 @@ const FooterPageLinksContainer = ({ pageLinks }) => (
 FooterPageLinksContainer.propTypes = {
   pageLinks: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      _id: PropTypes.string,
       linkFor: PropTypes.string,
       url: PropTypes.string,
     })
@@ -31,7 +31,7 @@ FooterPageLinksContainer.propTypes = {
 FooterPageLinksContainer.defaultProps = {
   pageLinks: [
     {
-      id: "",
+      _id: "",
       linkFor: "",
       url: "",
     },

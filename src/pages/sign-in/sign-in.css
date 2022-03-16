@@ -1,0 +1,6 @@
+.form-signin-container {
+  flex-direction: column;
+  margin: auto;
+  overflow: hidden;
+  width: 33rem;
+}

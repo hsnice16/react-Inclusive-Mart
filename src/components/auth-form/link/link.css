@@ -1,0 +1,12 @@
+.form-signup-link {
+  color: var(--COLOR-TEXT-600);
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.form-signup-link:hover {
+  color: var(--COLOR-TEXT-800);
+}

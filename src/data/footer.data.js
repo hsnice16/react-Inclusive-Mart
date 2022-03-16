@@ -9,41 +9,41 @@ import {
 const FooterLinks = {
   pageLinks: [
     {
-      id: uuid(),
+      _id: uuid(),
       linkFor: "Home",
       url: ROUTE_HOME,
     },
     {
-      id: uuid(),
+      _id: uuid(),
       linkFor: "Products",
       url: ROUTE_PRODUCTS,
     },
     {
-      id: uuid(),
+      _id: uuid(),
       linkFor: "My Cart",
       url: ROUTE_CART,
     },
     {
-      id: uuid(),
+      _id: uuid(),
       linkFor: "My WishLists",
       url: ROUTE_WISHLIST,
     },
   ],
 
   socialLinks: [
-    { id: uuid(), linkFor: "twitter", url: "https://twitter.com/hsnice16/" },
+    { _id: uuid(), linkFor: "twitter", url: "https://twitter.com/hsnice16/" },
     {
-      id: uuid(),
+      _id: uuid(),
       linkFor: "github",
       url: "https://github.com/hsnice16/",
     },
     {
-      id: uuid(),
+      _id: uuid(),
       linkFor: "linkedin-in",
       url: "https://www.linkedin.com/in/hsnice16/",
     },
     {
-      id: uuid(),
+      _id: uuid(),
       linkFor: "instagram",
       url: "https://www.instagram.com/hsnice16/",
     },

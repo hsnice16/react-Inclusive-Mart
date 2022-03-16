@@ -2,9 +2,14 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import { Footer, Header } from "./components";
-import { Home, Products, SignIn } from "./pages";
+import { Home, Products, SignIn, SignUp } from "./pages";
 
-import { ROUTE_HOME, ROUTE_PRODUCTS, ROUTE_SIGN_IN } from "./utils";
+import {
+  ROUTE_HOME,
+  ROUTE_PRODUCTS,
+  ROUTE_SIGN_IN,
+  ROUTE_SIGN_UP,
+} from "./utils";
 import { ProductsProvider } from "./context";
 
 // mockman-js
@@ -29,6 +34,7 @@ function App() {
         />
 
         <Route path={ROUTE_SIGN_IN} element={<SignIn />} />
+        <Route path={ROUTE_SIGN_UP} element={<SignUp />} />
 
         <Route path="/mockman-test" element={<Mockman />} />
       </Routes>

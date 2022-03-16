@@ -1,6 +1,7 @@
 .filter-container {
   background: var(--COLOR-WHITE);
   box-shadow: 0 0.1rem 0.4rem var(--COLOR-TEXT-500);
+  min-height: 100vh;
   height: max-content;
   padding: 3rem 0;
   width: 24rem;
@@ -17,6 +18,21 @@
 :is(.filter-container, .filter-md-container) > ul:not(.p-2) {
   border-bottom: thin solid var(--COLOR-TEXT-300);
   padding: 2rem;
+}
+
+.products-main {
+  flex: 1;
+  padding: 3rem;
+}
+
+.no-products-img-container {
+  max-width: 50rem;
+  margin: auto;
+}
+
+.no-products-img-container > img {
+  display: block;
+  max-width: 100%;
 }
 
 .loading-filter-list > :is(span, li) {
@@ -58,17 +74,16 @@
 
   .filter-md-container {
     background: var(--COLOR-WHITE);
-    height: 100vh;
     width: 100%;
     z-index: 1;
   }
 
-  main section ul {
+  .products-main section ul {
     align-items: center;
     justify-content: space-around;
   }
 
-  main {
+  .products-main {
     position: relative;
   }
 

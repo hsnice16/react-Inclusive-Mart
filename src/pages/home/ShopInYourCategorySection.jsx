@@ -1,7 +1,9 @@
+import { createSearchParams, Link } from "react-router-dom";
 import { HomeHeading } from "./shared";
 import { useCategory } from "../../context";
 import { CategoryCard } from "../../components";
-import { getEmptyArrayOfObjects } from "../../utils";
+import { getEmptyArrayOfObjects, ROUTE_PRODUCTS } from "../../utils";
+import { filterInitialReducerState } from "../../reducer";
 
 const ShopInYourCategorySection = () => {
   const { categories } = useCategory();
@@ -22,7 +24,14 @@ const ShopInYourCategorySection = () => {
         {status === "success" &&
           data.map(({ _id, img, categoryName }) => (
             <li key={_id} className="my-1">
-              <CategoryCard img={img} categoryName={categoryName} />
+              <Link
+                to={`${ROUTE_PRODUCTS}?${createSearchParams({
+                  ...filterInitialReducerState,
+                  filterByCategory: categoryName,
+                })} `}
+              >
+                <CategoryCard img={img} categoryName={categoryName} />
+              </Link>
             </li>
           ))}
       </ul>

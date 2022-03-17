@@ -1,0 +1,15 @@
+.form-btn-loading {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  cursor: not-allowed;
+}
+
+.form-btn-loading:hover {
+  background: var(--COLOR-PRIMARY);
+}
+
+.form-btn-loading > img {
+  max-width: 1.5rem;
+  margin-right: 0.5rem;
+}

@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 
-const FormContainer = ({ children }) => (
+const FormContainer = ({ children, handleSubmit }) => (
   <form
-    onSubmit={(event) => {
-      event.preventDefault();
-    }}
+    onSubmit={handleSubmit}
     className="border-r-unset form p-2 max-w-100pct shadow-unset"
   >
     {children}
@@ -13,10 +11,12 @@ const FormContainer = ({ children }) => (
 
 FormContainer.propTypes = {
   children: PropTypes.node,
+  handleSubmit: PropTypes.func,
 };
 
 FormContainer.defaultProps = {
   children: [],
+  handleSubmit: () => {},
 };
 
 export { FormContainer };

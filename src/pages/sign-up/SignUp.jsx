@@ -1,9 +1,15 @@
 import { ROUTE_SIGN_IN } from "../../utils";
 import { drStrange } from "../../assets";
-import { useDocumentTitle, useScrollToTop } from "../../custom-hooks";
+
+import {
+  useAuthHandler,
+  useDocumentTitle,
+  useScrollToTop,
+} from "../../custom-hooks";
 import {
   FormButton,
   FormContainer,
+  FormError,
   FormHeading,
   FormInput,
   FormLabel,
@@ -15,9 +21,25 @@ const SignUp = () => {
   useScrollToTop();
   useDocumentTitle("New on Inclusive Mart? Sign Up");
 
+  const {
+    status,
+    error,
+    firstName,
+    lastName,
+    email,
+    password,
+    confirmPassword,
+    handleInputChange,
+    handleSignUpFormSubmit,
+  } = useAuthHandler();
+
   return (
-    <main className="container flex main">
-      <div className="card m-auto w-45 overflow-hidden">
+    <main className="container flex flex-direction-col main">
+      {status === "error" && (
+        <FormError error={error} linkTo={ROUTE_SIGN_IN} onPage="SignUp" />
+      )}
+
+      <div className="card m-auto max-w-45 overflow-hidden">
         <img
           loading="lazy"
           className="w-4"
@@ -25,7 +47,7 @@ const SignUp = () => {
           alt="dr. strange poster"
         />
 
-        <FormContainer>
+        <FormContainer handleSubmit={handleSignUpFormSubmit}>
           <FormHeading headingText="Sign Up" />
 
           <div className="flex">
@@ -33,9 +55,11 @@ const SignUp = () => {
               <FormLabel labelFor="first-name" labelText="First Name" />
               <FormInput
                 type="text"
-                name="first-name"
+                name="firstName"
                 id="first-name"
                 placeholder="Inclusive"
+                value={firstName}
+                handleChange={handleInputChange}
               />
             </div>
 
@@ -43,9 +67,11 @@ const SignUp = () => {
               <FormLabel labelFor="last-name" labelText="Last Name" />
               <FormInput
                 type="text"
-                name="last-name"
+                name="lastName"
                 id="last-name"
                 placeholder="Mart"
+                value={lastName}
+                handleChange={handleInputChange}
               />
             </div>
           </div>
@@ -53,23 +79,38 @@ const SignUp = () => {
           <FormLabel labelFor="email-id" labelText="Email Address" />
           <FormInput
             type="email"
-            name="email-id"
+            name="email"
             id="email-id"
             placeholder="inclusive.mart@example.com"
+            value={email}
+            handleChange={handleInputChange}
           />
 
           <FormLabel labelFor="password" labelText="Password" />
-          <FormPasswordInput name="password" id="password" />
+          <FormPasswordInput
+            name="password"
+            id="password"
+            value={password}
+            handleChange={handleInputChange}
+          />
+          <span className="block fs-1p2 mb-1">
+            Should be Alpha Numeric and should have minimum length 6.
+          </span>
 
           <FormLabel labelFor="confirm-password" labelText="Confirm Password" />
-          <FormPasswordInput name="confirm-password" id="confirm-password" />
+          <FormPasswordInput
+            name="confirmPassword"
+            id="confirm-password"
+            value={confirmPassword}
+            handleChange={handleInputChange}
+          />
 
           <span className="block fs-1p2 mb-1 mt-2">
             By continuing, you agree to Inclusive Mart's Terms of Use and
             Privacy Policy.
           </span>
 
-          <FormButton buttonText="Create New Account" />
+          <FormButton buttonText="Create New Account" status={status} />
           <FormLink
             linkTo={ROUTE_SIGN_IN}
             linkText="Already using Inclusive Mart? Log In"

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./form-password-input.css";
 import { isInputTypePassword } from "../../../utils";
 
-const FormPasswordInput = ({ name, id }) => {
+const FormPasswordInput = ({ name, id, value, handleChange }) => {
   const [inputType, setInputType] = useState("password");
 
   const changeInputType = () => {
@@ -20,9 +20,15 @@ const FormPasswordInput = ({ name, id }) => {
         name={name}
         id={id}
         placeholder={isInputTypePassword(inputType) ? "********" : name}
+        value={value}
+        onChange={handleChange}
       />
 
-      <button className="bg-white border-none px-0p5" onClick={changeInputType}>
+      <button
+        type="button"
+        className="bg-white border-none px-0p5"
+        onClick={changeInputType}
+      >
         <i
           className={`far fa-eye${
             isInputTypePassword(inputType) ? "-slash" : ""
@@ -36,11 +42,15 @@ const FormPasswordInput = ({ name, id }) => {
 FormPasswordInput.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
 };
 
 FormPasswordInput.defaultProps = {
   name: "",
   id: "",
+  value: "",
+  handleChange: () => {},
 };
 
 export { FormPasswordInput };

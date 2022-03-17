@@ -10,6 +10,12 @@ import {
   ACTION_TYPE_SORT_BY_PRICE,
 } from "../reducer";
 
+/**
+ * useFilterHandler - hook
+ *
+ * @returns input handlers for all the
+ *          filter inputs
+ */
 const useFilterHandler = () => {
   const { products, filterState, filterDispatch } = useProducts();
   const { filterBySubCategories, filterByRatings } = products;

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { isInputTypePassword } from "../../utils";
+import "./form-password-input.css";
+import { isInputTypePassword } from "../../../utils";
 
-const PasswordInput = ({ name, id }) => {
+const FormPasswordInput = ({ name, id }) => {
   const [inputType, setInputType] = useState("password");
 
   const changeInputType = () => {
@@ -32,14 +33,14 @@ const PasswordInput = ({ name, id }) => {
   );
 };
 
-PasswordInput.propTypes = {
+FormPasswordInput.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
 };
 
-PasswordInput.defaultProps = {
+FormPasswordInput.defaultProps = {
   name: "",
   id: "",
 };
 
-export { PasswordInput };
+export { FormPasswordInput };

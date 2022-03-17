@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 
-const Heading = ({ headingText }) => (
+const FormHeading = ({ headingText }) => (
   <h1 className="mb-2 text-slate-600">{headingText}</h1>
 );
 
-Heading.propTypes = {
+FormHeading.propTypes = {
   headingText: PropTypes.string,
 };
 
-Heading.defaultProps = {
+FormHeading.defaultProps = {
   headingText: "",
 };
 
-export { Heading };
+export { FormHeading };

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Container = ({ children }) => (
+const FormContainer = ({ children }) => (
   <form
     onSubmit={(event) => {
       event.preventDefault();
@@ -11,12 +11,12 @@ const Container = ({ children }) => (
   </form>
 );
 
-Container.propTypes = {
+FormContainer.propTypes = {
   children: PropTypes.node,
 };
 
-Container.defaultProps = {
+FormContainer.defaultProps = {
   children: [],
 };
 
-export { Container };
+export { FormContainer };

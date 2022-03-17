@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 import "./sign-in.css";
+import { ROUTE_SIGN_UP } from "../../utils";
 import { drStrange } from "../../assets";
 import { useDocumentTitle, useScrollToTop } from "../../custom-hooks";
 import {
@@ -50,16 +53,19 @@ const SignIn = () => {
               Remember me
             </label>
 
-            <a
+            <Link
               className="fs-1p5 fw-bold text-slate-600 text-slate-800-hover"
-              href="#"
+              to="#"
             >
               Forgot Password?
-            </a>
+            </Link>
           </div>
 
           <FormButton buttonText="Log In" />
-          <FormLink linkURL="#" linkText="New on Inclusive Mart? Sign Up" />
+          <FormLink
+            linkTo={ROUTE_SIGN_UP}
+            linkText="New on Inclusive Mart? Sign Up"
+          />
         </FormContainer>
       </div>
     </main>

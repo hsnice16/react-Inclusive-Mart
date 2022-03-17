@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Button = ({ buttonText }) => (
+const FormButton = ({ buttonText }) => (
   <button className="btn btn-error-solid mx-0 w-100pct">
     {buttonText === "Log In" && (
       <>
@@ -11,12 +11,12 @@ const Button = ({ buttonText }) => (
   </button>
 );
 
-Button.propTypes = {
+FormButton.propTypes = {
   buttonText: PropTypes.string,
 };
 
-Button.defaultProps = {
+FormButton.defaultProps = {
   buttonText: "",
 };
 
-export { Button };
+export { FormButton };

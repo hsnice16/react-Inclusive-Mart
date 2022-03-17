@@ -16,8 +16,6 @@ import { ProductsProvider } from "./context";
 import Mockman from "mockman-js";
 
 function App() {
-  console.log(process.env.REACT_APP_JWT_SECRET);
-
   return (
     <>
       <Header />

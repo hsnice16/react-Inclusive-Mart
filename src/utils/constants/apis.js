@@ -12,3 +12,13 @@ export const API_TO_GET_HOME_PRODUCTS = {
   api: "/api/products/home",
   propertyToGet: "products",
 };
+
+export const API_TO_POST_SIGN_IN_DETAILS = {
+  api: "/api/auth/login",
+  propertyToGet: "encodedToken",
+};
+
+export const API_TO_POST_SIGN_UP_DETAILS = {
+  api: "/api/auth/signup",
+  propertyToGet: "encodedToken",
+};

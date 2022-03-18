@@ -10,7 +10,7 @@ import {
 } from "../reducer";
 
 /**
- * useAsync - hook
+ * useAsync - hook to GET data
  *
  * @param {string} apiToCall - api to call
  * @returns an object {state, dispatch}

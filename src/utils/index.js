@@ -1,6 +1,8 @@
 export * from "./constants/apis";
 export * from "./constants/routes";
 
+export { checkAlphaNumericString } from "./functions/checkAlphaNumericString";
+
 export { getCategoriesList } from "./functions/getCategoriesList";
 export { getEmptyArrayOfObjects } from "./functions/getEmptyArrayOfObjects";
 

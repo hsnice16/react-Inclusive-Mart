@@ -4,12 +4,9 @@ import PropTypes from "prop-types";
 import { useUser, useWishList } from "../../../context";
 import axios from "axios";
 import { ROUTE_HOME } from "../../../utils";
-import {
-  ACTION_TYPE_UPDATE_DATA,
-  ACTION_TYPE_POPULATE_DATA,
-} from "../../../reducer";
+import { ACTION_TYPE_POPULATE_DATA } from "../../../reducer";
 
-const ProductCard = ({ details, loading, cardIsOnPage, dispatch }) => {
+const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const {
     ratings,
     isInWishList,
@@ -45,11 +42,8 @@ const ProductCard = ({ details, loading, cardIsOnPage, dispatch }) => {
       };
 
       if (isInWishList) {
-        const updatedDetails = { ...details, isInWishList: false };
-
         await axios.delete(`/api/user/wishlist/${_id}`, config);
 
-        dispatch({ type: ACTION_TYPE_UPDATE_DATA, payload: updatedDetails });
         wishListDispatch({
           type: ACTION_TYPE_POPULATE_DATA,
           payload: wishlist.data.filter((product) => product._id !== _id),
@@ -62,7 +56,6 @@ const ProductCard = ({ details, loading, cardIsOnPage, dispatch }) => {
           { product: updatedDetails },
           config
         );
-        dispatch({ type: ACTION_TYPE_UPDATE_DATA, payload: updatedDetails });
 
         if (wishlist.data === null) {
           wishListDispatch({
@@ -155,7 +148,6 @@ ProductCard.propTypes = {
   }),
   loading: PropTypes.bool,
   cardIsOnPage: PropTypes.string,
-  dispatch: PropTypes.func,
 };
 
 ProductCard.defaultProps = {
@@ -173,7 +165,6 @@ ProductCard.defaultProps = {
   },
   loading: false,
   cardIsOnPage: "",
-  dispatch: () => {},
 };
 
 export { ProductCard };

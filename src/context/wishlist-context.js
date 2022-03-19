@@ -18,7 +18,26 @@ const WishListProvider = ({ children }) => {
   };
 
   const { state: wishlist, dispatch } = useAsync(API_TO_GET_WISHLIST, config);
-  const value = { wishlist, dispatch };
+
+  const isProductInWishList = (productId) => {
+    return wishlist.data.filter(({ _id }) => _id === productId).length > 0;
+  };
+
+  const getWishListFilteredData = (dataToFilter) => {
+    if (userState.isUserAuthTokenExist && wishlist.data) {
+      return wishlist.data.length > 0
+        ? dataToFilter.map((product) =>
+            isProductInWishList(product._id)
+              ? { ...product, isInWishList: true }
+              : product
+          )
+        : dataToFilter;
+    }
+
+    return dataToFilter;
+  };
+
+  const value = { wishlist, dispatch, getWishListFilteredData };
 
   return (
     <WishListContext.Provider value={value}>

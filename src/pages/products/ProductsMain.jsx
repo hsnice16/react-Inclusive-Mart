@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { ProductsFilterList } from "./shared";
 import { NoProductsImg, ProductCard } from "../../components";
-import { useProducts } from "../../context";
-import { getEmptyArrayOfObjects } from "../../utils";
+import { useProducts, useWishList } from "../../context";
+import { getEmptyArrayOfObjects, isStatusLoading } from "../../utils";
 import { useFilteredData } from "../../custom-hooks";
 
 const ProductsMain = () => {
-  const { products, asyncDispatch } = useProducts();
+  const { getWishListFilteredData } = useWishList();
+  const { products } = useProducts();
   const { status } = products;
-  const filteredData = useFilteredData();
+  let filteredData = useFilteredData();
+  filteredData = isStatusLoading(status)
+    ? filteredData
+    : getWishListFilteredData(filteredData);
 
   const [showMdFilter, setShowMdFilter] = useState(false);
   const [toggleMdFilter, setToggleMdFilter] = useState(false);
@@ -63,7 +67,7 @@ const ProductsMain = () => {
             (filteredData.length > 0 ? (
               filteredData.map((details) => (
                 <li key={details._id} className="m-0p5">
-                  <ProductCard details={details} dispatch={asyncDispatch} />
+                  <ProductCard details={details} />
                 </li>
               ))
             ) : (

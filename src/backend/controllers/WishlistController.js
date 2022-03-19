@@ -52,10 +52,7 @@ export const addItemToWishlistHandler = function (schema, request) {
       createdAt: formatDate(),
       updatedAt: formatDate(),
     });
-
     this.db.users.update({ _id: userId }, { wishlist: userWishlist });
-    this.db.products.update({ _id: product._id }, { isInWishList: true });
-
     return new Response(201, {}, { wishlist: userWishlist });
   } catch (error) {
     return new Response(
@@ -89,10 +86,7 @@ export const removeItemFromWishlistHandler = function (schema, request) {
     let userWishlist = schema.users.findBy({ _id: userId }).wishlist;
     const productId = request.params.productId;
     userWishlist = userWishlist.filter((item) => item._id !== productId);
-
     this.db.users.update({ _id: userId }, { wishlist: userWishlist });
-    this.db.products.update({ _id: productId }, { isInWishList: false });
-
     return new Response(200, {}, { wishlist: userWishlist });
   } catch (error) {
     return new Response(

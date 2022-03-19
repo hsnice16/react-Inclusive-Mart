@@ -1,7 +1,7 @@
+import { useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useReducer } from "react";
 import axios from "axios";
-import { useUser } from "../context";
+import { useToast, useUser } from "../context";
 import { useCookieHandler } from "./index";
 
 import {
@@ -29,6 +29,7 @@ const useAuthHandler = () => {
   const navigate = useNavigate();
   const { setUserState } = useUser();
   const { setUserAuthTokenCookie } = useCookieHandler();
+  const { handleAddMoreToasts } = useToast();
 
   const [authState, dispatch] = useReducer(
     authReducer,
@@ -43,6 +44,27 @@ const useAuthHandler = () => {
     rememberMe,
     status,
   } = authState;
+
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    return () => {
+      if (token !== "") {
+        setUserState({
+          isUserAuthTokenExist: true,
+          userAuthToken: token,
+        });
+
+        setUserAuthTokenCookie(token, rememberMe);
+        handleAddMoreToasts({
+          msg: "Now you are an authenticate user. Hope you would have a great time! Congrats 🎉🎉",
+          type: "entered_in_system",
+        });
+
+        dispatch({ type: ACTION_TYPE_SUCCESS });
+      }
+    };
+  }, [token]);
 
   const handleInputChange = (event) => {
     if (status === "error") {
@@ -70,16 +92,8 @@ const useAuthHandler = () => {
       const response = await axios.post(api, {
         ...data,
       });
-      const token = response.data[propertyToGet];
 
-      setUserState({
-        isUserAuthTokenExist: true,
-        userAuthToken: token,
-      });
-
-      setUserAuthTokenCookie(token, rememberMe);
-
-      dispatch({ type: ACTION_TYPE_SUCCESS });
+      setToken(response.data[propertyToGet]);
       navigate(ROUTE_HOME, { replace: true });
     } catch (error) {
       dispatch({

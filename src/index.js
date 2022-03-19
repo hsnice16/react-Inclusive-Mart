@@ -5,7 +5,12 @@ import { BrowserRouter } from "react-router-dom";
 import { makeServer } from "./server";
 
 import App from "./App";
-import { CategoryProvider, UserProvider, WishListProvider } from "./context";
+import {
+  CategoryProvider,
+  ToastProvider,
+  UserProvider,
+  WishListProvider,
+} from "./context";
 
 // Call make Server
 makeServer();
@@ -14,11 +19,13 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <CategoryProvider>
-          <WishListProvider>
-            <App />
-          </WishListProvider>
-        </CategoryProvider>
+        <ToastProvider>
+          <CategoryProvider>
+            <WishListProvider>
+              <App />
+            </WishListProvider>
+          </CategoryProvider>
+        </ToastProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,

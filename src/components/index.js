@@ -20,3 +20,4 @@ export { FilterUL } from "./products-filter-list/FilterUL";
 export { FilterULHead } from "./products-filter-list/FilterULHead";
 
 export { RestrictRoute } from "./restrict-route/RestrictRoute";
+export { Toast } from "./toast/Toast";

@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Footer, Header, RestrictRoute } from "./components";
-import { Home, Products, SignIn, SignUp, WishList } from "./pages";
+import { Home, NotFound, Products, SignIn, SignUp, WishList } from "./pages";
 
 import {
   ROUTE_HOME,
@@ -48,6 +48,7 @@ function App() {
         </Route>
 
         <Route path={ROUTE_WISHLIST} element={<WishList />} />
+        <Route path="*" element={<NotFound />} />
 
         <Route path="/mockman-test" element={<Mockman />} />
       </Routes>

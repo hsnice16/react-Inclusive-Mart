@@ -1,10 +1,7 @@
 import "./product-card.css";
 import PropTypes from "prop-types";
-
 import { useUser, useWishList } from "../../../context";
-import axios from "axios";
 import { ROUTE_HOME } from "../../../utils";
-import { ACTION_TYPE_POPULATE_DATA } from "../../../reducer";
 
 const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const {
@@ -19,7 +16,7 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
   } = details;
 
   const { userState } = useUser();
-  const { wishlist, dispatch: wishListDispatch } = useWishList();
+  const { postPrivateData, deletePrivateData } = useWishList();
 
   const [wishlistIconType, wishlistTooltipText] = isInWishList
     ? ["fas", "remove from wishlist"]
@@ -33,41 +30,12 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
     cardIsOnPage !== ROUTE_HOME ? "w-25" : "w-24"
   }`;
 
-  const handleWishListClick = async () => {
+  const handleWishListClick = () => {
     if (userState.isUserAuthTokenExist) {
-      const config = {
-        headers: {
-          authorization: userState.userAuthToken,
-        },
-      };
-
       if (isInWishList) {
-        await axios.delete(`/api/user/wishlist/${_id}`, config);
-
-        wishListDispatch({
-          type: ACTION_TYPE_POPULATE_DATA,
-          payload: wishlist.data.filter((product) => product._id !== _id),
-        });
+        deletePrivateData(_id);
       } else {
-        const updatedDetails = { ...details, isInWishList: true };
-
-        await axios.post(
-          "api/user/wishlist",
-          { product: updatedDetails },
-          config
-        );
-
-        if (wishlist.data === null) {
-          wishListDispatch({
-            type: ACTION_TYPE_POPULATE_DATA,
-            payload: [{ ...updatedDetails }],
-          });
-        } else {
-          wishListDispatch({
-            type: ACTION_TYPE_POPULATE_DATA,
-            payload: [...wishlist.data, { ...updatedDetails }],
-          });
-        }
+        postPrivateData({ product: { ...details, isInWishList: true } });
       }
     }
   };

@@ -9,6 +9,7 @@ const ProductsMain = () => {
   const { getWishListFilteredData } = useWishList();
   const { products } = useProducts();
   const { status } = products;
+
   let filteredData = useFilteredData();
   filteredData = isStatusLoading(status)
     ? filteredData
@@ -16,6 +17,7 @@ const ProductsMain = () => {
 
   const [showMdFilter, setShowMdFilter] = useState(false);
   const [toggleMdFilter, setToggleMdFilter] = useState(false);
+
   useEffect(() => {
     {
       /* 640 = 40em in products.css */

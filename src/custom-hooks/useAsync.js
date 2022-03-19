@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
 
-import { useUser } from "../context";
 import {
   sharedInitialReducerState,
   sharedReducer,
@@ -14,13 +13,9 @@ import {
  * useAsync - hook to GET data
  *
  * @param {string} apiToCall - api to call
- * @param {Object} config - configuration to get
- *         data, like authorization to get a user
- *         specific data
  * @returns an object {state, dispatch}
  */
-const useAsync = (apiToCall, config = {}) => {
-  const { userState } = useUser();
+const useAsync = (apiToCall) => {
   const { api, propertyToGet } = apiToCall;
 
   const [state, dispatch] = useReducer(
@@ -33,7 +28,7 @@ const useAsync = (apiToCall, config = {}) => {
       dispatch({ type: ACTION_TYPE_LOADING });
 
       try {
-        const response = await axios.get(api, config);
+        const response = await axios.get(api);
 
         dispatch({
           type: ACTION_TYPE_SUCCESS,
@@ -42,11 +37,11 @@ const useAsync = (apiToCall, config = {}) => {
       } catch (error) {
         dispatch({
           type: ACTION_TYPE_ERROR,
-          payload: "Error: Something is Wrong",
+          payload: error.message,
         });
       }
     })();
-  }, [userState.isUserAuthTokenExist]);
+  }, []);
 
   return { state, dispatch };
 };

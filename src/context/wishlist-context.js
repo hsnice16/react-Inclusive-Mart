@@ -1,23 +1,19 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { useUser } from "./user-context";
-import { useAsync } from "../custom-hooks";
+import { usePrivateAsync } from "../custom-hooks";
 import { sharedInitialReducerState } from "../reducer";
 import { API_TO_GET_WISHLIST } from "../utils";
 
 const WishListContext = createContext({
   wishlist: { ...sharedInitialReducerState },
   dispatch: () => {},
+  postPriavteData: () => {},
+  deletePrivateData: () => {},
 });
 
 const WishListProvider = ({ children }) => {
   const { userState } = useUser();
-  const config = {
-    headers: {
-      authorization: userState.userAuthToken,
-    },
-  };
-
-  const { state: wishlist, dispatch } = useAsync(API_TO_GET_WISHLIST, config);
+  const { state: wishlist, ...methods } = usePrivateAsync(API_TO_GET_WISHLIST);
 
   const isProductInWishList = (productId) => {
     return wishlist.data.filter(({ _id }) => _id === productId).length > 0;
@@ -37,7 +33,7 @@ const WishListProvider = ({ children }) => {
     return dataToFilter;
   };
 
-  const value = { wishlist, dispatch, getWishListFilteredData };
+  const value = { wishlist, ...methods, getWishListFilteredData };
 
   return (
     <WishListContext.Provider value={value}>

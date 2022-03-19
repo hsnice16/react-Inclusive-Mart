@@ -1,8 +1,15 @@
 import "./product-card.css";
 import PropTypes from "prop-types";
-import { ROUTE_HOME } from "../../../utils";
 
-const ProductCard = ({ details, loading, cardIsOnPage }) => {
+import { useUser, useWishList } from "../../../context";
+import axios from "axios";
+import { ROUTE_HOME } from "../../../utils";
+import {
+  ACTION_TYPE_UPDATE_DATA,
+  ACTION_TYPE_POPULATE_DATA,
+} from "../../../reducer";
+
+const ProductCard = ({ details, loading, cardIsOnPage, dispatch }) => {
   const {
     ratings,
     isInWishList,
@@ -11,7 +18,11 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
     description,
     price: { current, earlier, offPct },
     isInCart,
+    _id,
   } = details;
+
+  const { userState } = useUser();
+  const { wishlist, dispatch: wishListDispatch } = useWishList();
 
   const [wishlistIconType, wishlistTooltipText] = isInWishList
     ? ["fas", "remove from wishlist"]
@@ -24,6 +35,49 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const cardClassName = `card card-vertical ${
     cardIsOnPage !== ROUTE_HOME ? "w-25" : "w-24"
   }`;
+
+  const handleWishListClick = async () => {
+    if (userState.isUserAuthTokenExist) {
+      const config = {
+        headers: {
+          authorization: userState.userAuthToken,
+        },
+      };
+
+      if (isInWishList) {
+        const updatedDetails = { ...details, isInWishList: false };
+
+        await axios.delete(`/api/user/wishlist/${_id}`, config);
+
+        dispatch({ type: ACTION_TYPE_UPDATE_DATA, payload: updatedDetails });
+        wishListDispatch({
+          type: ACTION_TYPE_POPULATE_DATA,
+          payload: wishlist.data.filter((product) => product._id !== _id),
+        });
+      } else {
+        const updatedDetails = { ...details, isInWishList: true };
+
+        await axios.post(
+          "api/user/wishlist",
+          { product: updatedDetails },
+          config
+        );
+        dispatch({ type: ACTION_TYPE_UPDATE_DATA, payload: updatedDetails });
+
+        if (wishlist.data === null) {
+          wishListDispatch({
+            type: ACTION_TYPE_POPULATE_DATA,
+            payload: [{ ...updatedDetails }],
+          });
+        } else {
+          wishListDispatch({
+            type: ACTION_TYPE_POPULATE_DATA,
+            payload: [...wishlist.data, { ...updatedDetails }],
+          });
+        }
+      }
+    }
+  };
 
   return loading ? (
     <div className={`${cardClassName} loading-product-card`}>
@@ -40,6 +94,7 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
         </span>
 
         <button
+          onClick={handleWishListClick}
           className={`${
             isInWishList ? "bg-red-50" : ""
           } card-icon-btn ml-auto tooltip`}
@@ -96,9 +151,11 @@ ProductCard.propTypes = {
       offPct: PropTypes.number,
     }),
     isInCart: PropTypes.bool,
+    _id: PropTypes.string,
   }),
   loading: PropTypes.bool,
   cardIsOnPage: PropTypes.string,
+  dispatch: PropTypes.func,
 };
 
 ProductCard.defaultProps = {
@@ -112,9 +169,11 @@ ProductCard.defaultProps = {
     description: "",
     price: { current: "", earlier: "", offPct: 0 },
     isInCart: false,
+    _id: "",
   },
   loading: false,
   cardIsOnPage: "",
+  dispatch: () => {},
 };
 
 export { ProductCard };

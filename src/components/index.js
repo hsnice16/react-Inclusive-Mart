@@ -13,6 +13,10 @@ export { ProductCard } from "./card/product-card/ProductCard";
 export { Footer } from "./footer/Footer";
 export { Header } from "./header/Header";
 
+export { NoProductsImg } from "./no-products-img/NoProductsImg";
+
 export { ClearAllButton } from "./products-filter-list/ClearAllButton";
 export { FilterUL } from "./products-filter-list/FilterUL";
 export { FilterULHead } from "./products-filter-list/FilterULHead";
+
+export { RestrictRoute } from "./restrict-route/RestrictRoute";

@@ -15,6 +15,8 @@ export { getNumberFromFormattedPrice } from "./functions/getNumberFromFormattedP
 export { getShuffledArray } from "./functions/getShuffledArray";
 export { getSortingFunction } from "./functions/getSortingFunction";
 export { getSubCategoriesList } from "./functions/getSubCategoriesList";
+export { getUpdatedData } from "./functions/getUpdatedData";
 
 export { isInputTypePassword } from "./functions/isInputTypePassword";
+export { isStatusLoading } from "./functions/isStatusLoading";
 export { removeEmptyStringsFromArray } from "./functions/removeEmptyStringsFromArray";

@@ -22,3 +22,8 @@ export const API_TO_POST_SIGN_UP_DETAILS = {
   api: "/api/auth/signup",
   propertyToGet: "encodedToken",
 };
+
+export const API_TO_GET_WISHLIST = {
+  api: "/api/user/wishlist",
+  propertyToGet: "wishlist",
+};

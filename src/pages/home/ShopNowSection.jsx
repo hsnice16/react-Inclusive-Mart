@@ -9,7 +9,7 @@ import {
 } from "../../utils";
 
 const ShopNowSection = () => {
-  const { state: products } = useAsync(API_TO_GET_HOME_PRODUCTS);
+  const { state: products, dispatch } = useAsync(API_TO_GET_HOME_PRODUCTS);
   const { data, status } = products;
 
   return (
@@ -25,9 +25,13 @@ const ShopNowSection = () => {
           ))}
 
         {status === "success" &&
-          data.map(({ _id, ...details }) => (
-            <li key={_id} className="my-1">
-              <ProductCard details={details} cardIsOnPage={ROUTE_HOME} />
+          data.map((details) => (
+            <li key={details._id} className="my-1">
+              <ProductCard
+                details={details}
+                cardIsOnPage={ROUTE_HOME}
+                dispatch={dispatch}
+              />
             </li>
           ))}
       </ul>

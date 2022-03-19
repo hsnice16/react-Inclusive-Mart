@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { ProductsFilterList } from "./shared";
-import { ProductCard } from "../../components";
+import { NoProductsImg, ProductCard } from "../../components";
 import { useProducts } from "../../context";
 import { getEmptyArrayOfObjects } from "../../utils";
 import { useFilteredData } from "../../custom-hooks";
-import { noProducts } from "../../assets";
 
 const ProductsMain = () => {
-  const { products } = useProducts();
+  const { products, asyncDispatch } = useProducts();
   const { status } = products;
   const filteredData = useFilteredData();
 
@@ -62,15 +61,13 @@ const ProductsMain = () => {
 
           {status === "success" &&
             (filteredData.length > 0 ? (
-              filteredData.map(({ _id, ...details }) => (
-                <li key={_id} className="m-0p5">
-                  <ProductCard details={details} />
+              filteredData.map((details) => (
+                <li key={details._id} className="m-0p5">
+                  <ProductCard details={details} dispatch={asyncDispatch} />
                 </li>
               ))
             ) : (
-              <div className="no-products-img-container">
-                <img src={noProducts} alt="empty box, showing no products" />
-              </div>
+              <NoProductsImg />
             ))}
         </ul>
       </section>

@@ -13,7 +13,7 @@ const FormError = ({ error, linkTo, onPage }) => {
           <>
             Email Id is already registered. Please{" "}
             <Link to={linkTo} className="link">
-              Sign In
+              Log In
             </Link>
           </>
         ) : (

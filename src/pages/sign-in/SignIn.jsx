@@ -89,7 +89,7 @@ const SignIn = () => {
             </Link>
           </div>
 
-          <FormButton buttonText="Sign In" status={status} />
+          <FormButton buttonText="Log In" status={status} />
           <FormLink
             linkTo={ROUTE_SIGN_UP}
             linkText="New on Inclusive Mart? Sign Up"

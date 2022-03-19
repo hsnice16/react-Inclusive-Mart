@@ -1,0 +1,8 @@
+.no-products-img-container {
+  max-width: 50rem;
+  margin: auto;
+}
+
+.no-products-img-container > img {
+  max-width: 100%;
+}

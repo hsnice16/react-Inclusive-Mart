@@ -1,5 +1,6 @@
 import "./product-card.css";
 import PropTypes from "prop-types";
+import { useUser, useWishList } from "../../../context";
 import { ROUTE_HOME } from "../../../utils";
 
 const ProductCard = ({ details, loading, cardIsOnPage }) => {
@@ -11,7 +12,11 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
     description,
     price: { current, earlier, offPct },
     isInCart,
+    _id,
   } = details;
+
+  const { userState } = useUser();
+  const { postPrivateData, deletePrivateData } = useWishList();
 
   const [wishlistIconType, wishlistTooltipText] = isInWishList
     ? ["fas", "remove from wishlist"]
@@ -24,6 +29,16 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const cardClassName = `card card-vertical ${
     cardIsOnPage !== ROUTE_HOME ? "w-25" : "w-24"
   }`;
+
+  const handleWishListClick = () => {
+    if (userState.isUserAuthTokenExist) {
+      if (isInWishList) {
+        deletePrivateData(_id);
+      } else {
+        postPrivateData({ product: { ...details, isInWishList: true } });
+      }
+    }
+  };
 
   return loading ? (
     <div className={`${cardClassName} loading-product-card`}>
@@ -40,6 +55,7 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
         </span>
 
         <button
+          onClick={handleWishListClick}
           className={`${
             isInWishList ? "bg-red-50" : ""
           } card-icon-btn ml-auto tooltip`}
@@ -96,6 +112,7 @@ ProductCard.propTypes = {
       offPct: PropTypes.number,
     }),
     isInCart: PropTypes.bool,
+    _id: PropTypes.string,
   }),
   loading: PropTypes.bool,
   cardIsOnPage: PropTypes.string,
@@ -112,6 +129,7 @@ ProductCard.defaultProps = {
     description: "",
     price: { current: "", earlier: "", offPct: 0 },
     isInCart: false,
+    _id: "",
   },
   loading: false,
   cardIsOnPage: "",

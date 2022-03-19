@@ -1,24 +1,33 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-
-import { Footer, Header } from "./components";
-import { Home, Products, SignIn, SignUp } from "./pages";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Footer, Header, RestrictRoute } from "./components";
+import { Home, Products, SignIn, SignUp, WishList } from "./pages";
 
 import {
   ROUTE_HOME,
   ROUTE_PRODUCTS,
   ROUTE_SIGN_IN,
   ROUTE_SIGN_UP,
+  ROUTE_WISHLIST,
 } from "./utils";
-import { ProductsProvider } from "./context";
+import { ProductsProvider, useUser } from "./context";
 
 // mockman-js
 import Mockman from "mockman-js";
 
 function App() {
+  const location = useLocation();
+  const { userState } = useUser();
+  const RestrictRouteList = [ROUTE_SIGN_IN, ROUTE_SIGN_UP];
+
   return (
     <>
-      <Header />
+      {userState.isUserAuthTokenExist &&
+      RestrictRouteList.includes(location.pathname) ? (
+        <></>
+      ) : (
+        <Header />
+      )}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,13 +42,22 @@ function App() {
           }
         />
 
-        <Route path={ROUTE_SIGN_IN} element={<SignIn />} />
-        <Route path={ROUTE_SIGN_UP} element={<SignUp />} />
+        <Route element={<RestrictRoute />}>
+          <Route path={ROUTE_SIGN_IN} element={<SignIn />} />
+          <Route path={ROUTE_SIGN_UP} element={<SignUp />} />
+        </Route>
+
+        <Route path={ROUTE_WISHLIST} element={<WishList />} />
 
         <Route path="/mockman-test" element={<Mockman />} />
       </Routes>
 
-      <Footer />
+      {userState.isUserAuthTokenExist &&
+      RestrictRouteList.includes(location.pathname) ? (
+        <></>
+      ) : (
+        <Footer />
+      )}
     </>
   );
 }

@@ -37,11 +37,11 @@ const useAsync = (apiToCall) => {
       } catch (error) {
         dispatch({
           type: ACTION_TYPE_ERROR,
-          payload: "Error: Something is Wrong",
+          payload: error.message,
         });
       }
     })();
-  }, [apiToCall]);
+  }, []);
 
   return { state, dispatch };
 };

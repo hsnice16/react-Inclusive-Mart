@@ -25,7 +25,7 @@ const FooterLinks = {
     },
     {
       _id: uuid(),
-      linkFor: "My WishLists",
+      linkFor: "My WishList",
       url: ROUTE_WISHLIST,
     },
   ],

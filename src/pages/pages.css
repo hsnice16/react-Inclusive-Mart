@@ -7,7 +7,7 @@
 /** Media Query **/
 
 @media only screen and (max-width: 40em) {
-  /** present in wishlist and products page **/
+  /** used on wishlist and products page **/
   .card.w-25 {
     max-width: 22rem;
   }
@@ -18,7 +18,7 @@
 }
 
 @media only screen and (max-width: 32em) {
-  /** present in wishlist and products page **/
+  /** used on wishlist and products page **/
   .card.w-25 {
     max-width: 30rem;
     width: 30rem;

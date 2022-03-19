@@ -25,16 +25,6 @@
   padding: 3rem;
 }
 
-.no-products-img-container {
-  max-width: 50rem;
-  margin: auto;
-}
-
-.no-products-img-container > img {
-  display: block;
-  max-width: 100%;
-}
-
 .loading-filter-list > :is(span, li) {
   background: var(--COLOR-BACKGROUND);
 }

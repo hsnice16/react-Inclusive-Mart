@@ -17,4 +17,5 @@ export { getSortingFunction } from "./functions/getSortingFunction";
 export { getSubCategoriesList } from "./functions/getSubCategoriesList";
 
 export { isInputTypePassword } from "./functions/isInputTypePassword";
+export { isStatusLoading } from "./functions/isStatusLoading";
 export { removeEmptyStringsFromArray } from "./functions/removeEmptyStringsFromArray";

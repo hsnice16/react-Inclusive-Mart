@@ -1,15 +1,14 @@
 import { useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useToast, useUser } from "../context";
+import { useToast, useUser } from "context";
 import { useCookieHandler } from "./index";
-
 import {
   ROUTE_HOME,
   API_TO_POST_SIGN_IN_DETAILS,
   API_TO_POST_SIGN_UP_DETAILS,
   checkAlphaNumericString,
-} from "../utils";
+} from "utils";
 import {
   authInitialReducerState,
   authReducer,
@@ -17,7 +16,7 @@ import {
   ACTION_TYPE_ERROR,
   ACTION_TYPE_LOADING,
   ACTION_TYPE_SUCCESS,
-} from "../reducer";
+} from "reducer";
 
 /**
  * useAuthHandler - hook

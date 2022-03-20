@@ -1,14 +1,13 @@
 import { HomeHeading } from "./shared";
-import { ProductCard } from "../../components";
-import { useAsync } from "../../custom-hooks";
-
-import { useWishList } from "../../context";
+import { ProductCard } from "components";
+import { useAsync } from "custom-hooks";
+import { useWishList } from "context";
 import {
   isStatusLoading,
   getEmptyArrayOfObjects,
   ROUTE_HOME,
   API_TO_GET_HOME_PRODUCTS,
-} from "../../utils";
+} from "utils";
 
 const ShopNowSection = () => {
   const { state: products } = useAsync(API_TO_GET_HOME_PRODUCTS);

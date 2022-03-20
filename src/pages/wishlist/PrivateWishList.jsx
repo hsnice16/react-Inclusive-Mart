@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
-import {
-  ROUTE_PRODUCTS,
-  isStatusLoading,
-  getEmptyArrayOfObjects,
-} from "../../utils";
-
-import { useWishList } from "../../context";
-import { useDocumentTitle } from "../../custom-hooks";
+import { ROUTE_PRODUCTS, isStatusLoading, getEmptyArrayOfObjects } from "utils";
+import { useWishList } from "context";
+import { useDocumentTitle } from "custom-hooks";
 import { WishListHeading } from "./shared";
-import { NoProductsImg, ProductCard } from "../../components";
+import { NoProductsImg, ProductCard } from "components";
 
 const PrivateWishList = () => {
   const { wishlist } = useWishList();

@@ -1,16 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import { BrowserRouter } from "react-router-dom";
-import { makeServer } from "./server";
-
-import App from "./App";
+import { makeServer } from "server";
+import App from "App";
 import {
   CategoryProvider,
   ToastProvider,
   UserProvider,
   WishListProvider,
-} from "./context";
+} from "context";
 
 // Call make Server
 makeServer();

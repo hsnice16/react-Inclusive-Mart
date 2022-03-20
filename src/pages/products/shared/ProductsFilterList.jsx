@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { ClearAllButton, FilterUL, FilterULHead } from "../../../components";
-import { useCategory, useProducts } from "../../../context";
-import { getCategoriesList, getSubCategoriesList } from "../../../utils";
-import { useFilterHandler } from "../../../custom-hooks";
+import { ClearAllButton, FilterUL, FilterULHead } from "components";
+import { useCategory, useProducts } from "context";
+import { getCategoriesList, getSubCategoriesList } from "utils";
+import { useFilterHandler } from "custom-hooks";
 
 const ProductsFilterList = ({ forScreenSize, handleMdFilterToggling }) => {
   const { categories } = useCategory();

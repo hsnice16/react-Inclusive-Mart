@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { ROUTE_SIGN_IN } from "../../utils";
+import { ROUTE_SIGN_IN } from "utils";
 
 const Toast = ({ msg, type, handleToastClose }) => {
   useEffect(() => {

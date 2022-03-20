@@ -1,7 +1,7 @@
 import "./form-button.css";
 import PropTypes from "prop-types";
-import { spinner5 } from "../../../assets";
-import { isStatusLoading } from "../../../utils";
+import { spinner5 } from "assets";
+import { isStatusLoading } from "utils";
 
 const FormButton = ({ buttonText, status }) => (
   <button

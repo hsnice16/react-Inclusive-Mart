@@ -1,9 +1,7 @@
 import React from "react";
 import "./home.css";
-
-import { heroImg } from "../../assets";
-import { useDocumentTitle, useScrollToTop } from "../../custom-hooks";
-
+import { heroImg } from "assets";
+import { useDocumentTitle, useScrollToTop } from "custom-hooks";
 import { ShopInYourCategorySection } from "./ShopInYourCategorySection";
 import { ShopNowSection } from "./ShopNowSection";
 

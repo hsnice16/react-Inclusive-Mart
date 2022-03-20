@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
-import { useAsync } from "../custom-hooks";
-import { API_TO_GET_ALL_CATEGORIES } from "../utils";
-import { sharedInitialReducerState } from "../reducer";
+import { useAsync } from "custom-hooks";
+import { API_TO_GET_ALL_CATEGORIES } from "utils";
+import { sharedInitialReducerState } from "reducer";
 
 const CategoryContext = createContext({
   categories: sharedInitialReducerState,

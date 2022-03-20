@@ -1,6 +1,6 @@
 import "./no-products-img.css";
 import PropTypes from "prop-types";
-import { noProducts } from "../../assets";
+import { noProducts } from "assets";
 
 const NoProductsImg = ({ src }) => (
   <div className="no-products-img-container">

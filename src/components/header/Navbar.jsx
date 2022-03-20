@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
-import { ROUTE_CART, ROUTE_HOME, ROUTE_WISHLIST } from "../../utils";
-import { logoBgStone } from "../../assets";
+import { ROUTE_CART, ROUTE_HOME, ROUTE_WISHLIST } from "utils";
+import { logoBgStone } from "assets";
 import { NavbarLogInBtn, NavbarInputForm } from "./shared";
-import { useUser, useWishList } from "../../context";
+import { useUser, useWishList } from "context";
 
 /**
  * NavbarBadgeLink - component for badge link

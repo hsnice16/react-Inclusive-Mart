@@ -1,5 +1,5 @@
-import { useUser } from "../../context";
-import { useScrollToTop } from "../../custom-hooks";
+import { useUser } from "context";
+import { useScrollToTop } from "custom-hooks";
 import { PrivateWishList } from "./PrivateWishList";
 import { PublicWishList } from "./PublicWishList";
 

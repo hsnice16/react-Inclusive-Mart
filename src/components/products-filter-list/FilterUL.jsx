@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { FilterULHead } from "./FilterULHead";
-import { getFormattedInputId } from "../../utils";
+import { getFormattedInputId } from "utils";
 
 const FilterUL = ({
   headingText,

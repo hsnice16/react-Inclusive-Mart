@@ -1,8 +1,7 @@
-import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_SIGN_IN, ROUTE_HOME } from "../../../utils";
-import { useToast, useUser } from "../../../context";
-import { useCookieHandler } from "../../../custom-hooks";
+import { ROUTE_SIGN_IN, ROUTE_HOME } from "utils";
+import { useToast, useUser } from "context";
+import { useCookieHandler } from "custom-hooks";
 
 const NavbarLogInBtn = () => {
   const navigate = useNavigate();

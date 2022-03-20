@@ -1,7 +1,7 @@
 import "./product-card.css";
 import PropTypes from "prop-types";
-import { useToast, useUser, useWishList } from "../../../context";
-import { ROUTE_HOME } from "../../../utils";
+import { useToast, useUser, useWishList } from "context";
+import { ROUTE_HOME } from "utils";
 
 const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const {

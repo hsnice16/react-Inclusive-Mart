@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import "./sign-in.css";
-import { ROUTE_SIGN_UP } from "../../utils";
-import { drStrange } from "../../assets";
-
-import {
-  useAuthHandler,
-  useDocumentTitle,
-  useScrollToTop,
-} from "../../custom-hooks";
+import { ROUTE_SIGN_UP } from "utils";
+import { drStrange } from "assets";
+import { useAuthHandler, useDocumentTitle, useScrollToTop } from "custom-hooks";
 import {
   FormButton,
   FormContainer,
@@ -17,7 +12,7 @@ import {
   FormLabel,
   FormLink,
   FormPasswordInput,
-} from "../../components";
+} from "components";
 
 const SignIn = () => {
   useScrollToTop();

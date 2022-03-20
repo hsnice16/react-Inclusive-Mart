@@ -1,4 +1,4 @@
-import { FooterLinks } from "../../data";
+import { FooterLinks } from "data";
 import { FooterPageLinksContainer } from "./FooterPageLinksContainer";
 import { FooterSocialLinksContainer } from "./FooterSocialLinksContainer";
 

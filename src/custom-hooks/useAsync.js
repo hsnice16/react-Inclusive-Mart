@@ -1,13 +1,12 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
-
 import {
   sharedInitialReducerState,
   sharedReducer,
   ACTION_TYPE_ERROR,
   ACTION_TYPE_LOADING,
   ACTION_TYPE_SUCCESS,
-} from "../reducer";
+} from "reducer";
 
 /**
  * useAsync - hook to GET data

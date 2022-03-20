@@ -1,4 +1,4 @@
-import { filterInitialReducerState } from "../../reducer";
+import { filterInitialReducerState } from "reducer";
 
 /**
  * renderFunc - reduce logic of getFilterStateFromSearchParams

@@ -1,14 +1,13 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
-import { useUser } from "../context";
-
+import { useToast, useUser } from "context";
 import {
   sharedInitialReducerState,
   sharedReducer,
   ACTION_TYPE_ERROR,
   ACTION_TYPE_LOADING,
   ACTION_TYPE_SUCCESS,
-} from "../reducer";
+} from "reducer";
 
 /**
  * usePrivateAsync - hook to call private APIs
@@ -29,6 +28,7 @@ const usePrivateAsync = (apiToCall) => {
       authorization: userState.userAuthToken,
     },
   };
+  const { handleAddMoreToasts } = useToast();
 
   const [state, dispatch] = useReducer(
     sharedReducer,
@@ -65,6 +65,11 @@ const usePrivateAsync = (apiToCall) => {
         type: ACTION_TYPE_SUCCESS,
         payload: response.data[propertyToGet],
       });
+
+      handleAddMoreToasts({
+        msg: propertyToGet === "wishlist" ? "Added in Your WishList 🎉" : "",
+        type: propertyToGet === "wishlist" ? "private_wishlist" : "",
+      });
     } catch (error) {
       dispatch({
         type: ACTION_TYPE_ERROR,
@@ -82,6 +87,12 @@ const usePrivateAsync = (apiToCall) => {
       dispatch({
         type: ACTION_TYPE_SUCCESS,
         payload: response.data[propertyToGet],
+      });
+
+      handleAddMoreToasts({
+        msg:
+          propertyToGet === "wishlist" ? "Removed from Your WishList 🎉" : "",
+        type: propertyToGet === "wishlist" ? "private_wishlist" : "",
       });
     } catch (error) {
       dispatch({

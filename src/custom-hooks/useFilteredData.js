@@ -1,10 +1,10 @@
-import { useProducts } from "../context";
+import { useProducts } from "context";
 import {
   getMinimumSelectedRating,
   getNumberFromFormattedPrice,
   getSortingFunction,
   removeEmptyStringsFromArray,
-} from "../utils";
+} from "utils";
 
 /**
  * useFilteredData - hook

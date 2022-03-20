@@ -4,7 +4,7 @@ import {
   ROUTE_HOME,
   ROUTE_PRODUCTS,
   ROUTE_WISHLIST,
-} from "../utils";
+} from "utils";
 
 const FooterLinks = {
   pageLinks: [

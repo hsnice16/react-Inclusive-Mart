@@ -1,9 +1,9 @@
 import { createSearchParams, Link } from "react-router-dom";
 import { HomeHeading } from "./shared";
-import { useCategory } from "../../context";
-import { CategoryCard } from "../../components";
-import { getEmptyArrayOfObjects, ROUTE_PRODUCTS } from "../../utils";
-import { filterInitialReducerState } from "../../reducer";
+import { useCategory } from "context";
+import { CategoryCard } from "components";
+import { getEmptyArrayOfObjects, ROUTE_PRODUCTS } from "utils";
+import { filterInitialReducerState } from "reducer";
 
 const ShopInYourCategorySection = () => {
   const { categories } = useCategory();

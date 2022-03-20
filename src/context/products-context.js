@@ -4,12 +4,9 @@ import {
   sharedInitialReducerState,
   filterInitialReducerState,
   filterReducer,
-} from "../reducer";
-import { useAsync } from "../custom-hooks";
-import {
-  API_TO_GET_ALL_PRODUCTS,
-  getFilterStateFromSearchParams,
-} from "../utils";
+} from "reducer";
+import { useAsync } from "custom-hooks";
+import { API_TO_GET_ALL_PRODUCTS, getFilterStateFromSearchParams } from "utils";
 
 const ProductsContext = createContext({
   products: { ...sharedInitialReducerState, ...filterInitialReducerState },

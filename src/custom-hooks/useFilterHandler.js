@@ -1,5 +1,5 @@
 import { createSearchParams, useSearchParams } from "react-router-dom";
-import { useProducts } from "../context";
+import { useProducts } from "context";
 import {
   filterInitialReducerState,
   ACTION_TYPE_FILTER_BY_PRICE_RANGE,
@@ -8,7 +8,7 @@ import {
   ACTION_TYPE_FILTER_BY_SUB_CATEGORY,
   ACTION_TYPE_RESET_FILTER,
   ACTION_TYPE_SORT_BY_PRICE,
-} from "../reducer";
+} from "reducer";
 
 /**
  * useFilterHandler - hook

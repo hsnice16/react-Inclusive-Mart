@@ -1,7 +1,7 @@
 import "./product-card.css";
 import PropTypes from "prop-types";
-import { useUser, useWishList } from "../../../context";
-import { ROUTE_HOME } from "../../../utils";
+import { useToast, useUser, useWishList } from "context";
+import { ROUTE_HOME } from "utils";
 
 const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const {
@@ -17,6 +17,7 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
 
   const { userState } = useUser();
   const { postPrivateData, deletePrivateData } = useWishList();
+  const { handleAddMoreToasts } = useToast();
 
   const [wishlistIconType, wishlistTooltipText] = isInWishList
     ? ["fas", "remove from wishlist"]
@@ -37,6 +38,8 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
       } else {
         postPrivateData({ product: { ...details, isInWishList: true } });
       }
+    } else {
+      handleAddMoreToasts({ msg: "", type: "public_wishlist" });
     }
   };
 

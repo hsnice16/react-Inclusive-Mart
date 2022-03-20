@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { ROUTE_SIGN_IN } from "../../utils";
+import { ROUTE_SIGN_IN } from "utils";
 import { WishListHeading } from "./shared";
-import { useDocumentTitle } from "../../custom-hooks";
-import { NoProductsImg } from "../../components";
+import { useDocumentTitle } from "custom-hooks";
+import { NoProductsImg } from "components";
 
 const PublicWishList = () => {
   useDocumentTitle("Log In, to add items in your WishList");

@@ -1,5 +1,5 @@
 import "./products.css";
-import { useDocumentTitle, useScrollToTop } from "../../custom-hooks";
+import { useDocumentTitle, useScrollToTop } from "custom-hooks";
 import { ProductsFilterList } from "./shared";
 import { ProductsMain } from "./ProductsMain";
 

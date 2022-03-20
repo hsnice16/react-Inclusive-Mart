@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
 import { useUser } from "./user-context";
-import { usePrivateAsync } from "../custom-hooks";
-import { sharedInitialReducerState } from "../reducer";
-import { API_TO_GET_WISHLIST } from "../utils";
+import { usePrivateAsync } from "custom-hooks";
+import { sharedInitialReducerState } from "reducer";
+import { API_TO_GET_WISHLIST } from "utils";
 
 const WishListContext = createContext({
   wishlist: { ...sharedInitialReducerState },

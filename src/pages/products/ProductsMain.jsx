@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ProductsFilterList } from "./shared";
-import { NoProductsImg, ProductCard } from "../../components";
-import { useProducts, useWishList } from "../../context";
-import { getEmptyArrayOfObjects, isStatusLoading } from "../../utils";
-import { useFilteredData } from "../../custom-hooks";
+import { NoProductsImg, ProductCard } from "components";
+import { useProducts, useWishList } from "context";
+import { getEmptyArrayOfObjects, isStatusLoading } from "utils";
+import { useFilteredData } from "custom-hooks";
 
 const ProductsMain = () => {
   const { getWishListFilteredData } = useWishList();

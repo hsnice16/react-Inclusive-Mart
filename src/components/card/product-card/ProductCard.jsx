@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "./product-card.css";
 import PropTypes from "prop-types";
-import { useToast, useUser, useWishList } from "context";
-import { ROUTE_HOME } from "utils";
+import { useCart, useToast, useUser, useWishList } from "context";
+import { ROUTE_CART, ROUTE_HOME } from "utils";
 
 const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const {
@@ -15,8 +16,11 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
     _id,
   } = details;
 
+  const navigate = useNavigate();
   const { userState } = useUser();
-  const { postPrivateData, deletePrivateData } = useWishList();
+  const { postPrivateData: postCart } = useCart();
+  const { postPrivateData: postWishList, deletePrivateData: deleteWishList } =
+    useWishList();
   const { handleAddMoreToasts } = useToast();
 
   const [wishlistIconType, wishlistTooltipText] = isInWishList
@@ -34,12 +38,24 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
   const handleWishListClick = () => {
     if (userState.isUserAuthTokenExist) {
       if (isInWishList) {
-        deletePrivateData(_id);
+        deleteWishList(_id);
       } else {
-        postPrivateData({ product: { ...details, isInWishList: true } });
+        postWishList({ product: { ...details, isInWishList: true } });
       }
     } else {
-      handleAddMoreToasts({ msg: "", type: "public_wishlist" });
+      handleAddMoreToasts({ msg: "WishList", type: "public_wishlist" });
+    }
+  };
+
+  const handleCartClick = () => {
+    if (userState.isUserAuthTokenExist) {
+      if (isInCart) {
+        navigate(ROUTE_CART);
+      } else {
+        postCart({ product: { ...details, isInCart: true } });
+      }
+    } else {
+      handleAddMoreToasts({ msg: "Cart", type: "public_cart" });
     }
   };
 
@@ -93,7 +109,10 @@ const ProductCard = ({ details, loading, cardIsOnPage }) => {
         </span>
       </div>
 
-      <button className={`btn btn-add-to-cart ${cartBtnBg}`}>
+      <button
+        onClick={handleCartClick}
+        className={`btn btn-add-to-cart ${cartBtnBg}`}
+      >
         {cartBtnText}
       </button>
     </div>
@@ -117,6 +136,7 @@ ProductCard.propTypes = {
     isInCart: PropTypes.bool,
     _id: PropTypes.string,
   }),
+
   loading: PropTypes.bool,
   cardIsOnPage: PropTypes.string,
 };

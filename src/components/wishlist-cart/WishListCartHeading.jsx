@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 
-const WishListHeading = ({ headingText }) => (
+const WishListCartHeading = ({ headingText }) => (
   <h1 className="fs-3 my-2 text-center">{headingText}</h1>
 );
 
-WishListHeading.propTypes = {
+WishListCartHeading.propTypes = {
   headingText: PropTypes.string,
 };
 
-WishListHeading.defaultProps = {
+WishListCartHeading.defaultProps = {
   headingText: "",
 };
 
-export { WishListHeading };
+export { WishListCartHeading };

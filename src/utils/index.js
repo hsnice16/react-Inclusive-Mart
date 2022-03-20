@@ -10,7 +10,9 @@ export { getFilterStateFromSearchParams } from "./functions/getFilterStateFromSe
 export { getFormattedInputId } from "./functions/getFormattedInputId";
 
 export { getMinimumSelectedRating } from "./functions/getMinimumSelectedRating";
+export { getNumberInLocaleStringFormat } from "./functions/getNumberInLocaleStringFormat";
 export { getNumberFromFormattedPrice } from "./functions/getNumberFromFormattedPrice";
+export { getPriceCardDetails } from "./functions/getPriceCardDetails";
 
 export { getShuffledArray } from "./functions/getShuffledArray";
 export { getSortingFunction } from "./functions/getSortingFunction";

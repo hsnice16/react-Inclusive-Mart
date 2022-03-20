@@ -1,7 +1,7 @@
 import { HomeHeading } from "./shared";
 import { ProductCard } from "components";
 import { useAsync } from "custom-hooks";
-import { useWishList } from "context";
+import { useCart, useWishList } from "context";
 import {
   isStatusLoading,
   getEmptyArrayOfObjects,
@@ -13,8 +13,11 @@ const ShopNowSection = () => {
   const { state: products } = useAsync(API_TO_GET_HOME_PRODUCTS);
   let { data, status } = products;
 
+  const { getCartFilteredData } = useCart();
   const { getWishListFilteredData } = useWishList();
-  data = isStatusLoading(status) ? data : getWishListFilteredData(data);
+  data = isStatusLoading(status)
+    ? data
+    : getCartFilteredData(getWishListFilteredData(data));
 
   return (
     <section className="py-2">

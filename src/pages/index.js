@@ -1,5 +1,6 @@
 import "./pages.css";
 
+export { Cart } from "./cart/Cart";
 export { Home } from "./home/Home";
 export { NotFound } from "./not-found/NotFound";
 export { Products } from "./products/Products";

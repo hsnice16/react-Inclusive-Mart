@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 import { ROUTE_CART, ROUTE_HOME, ROUTE_WISHLIST } from "utils";
 import { logoBgStone } from "assets";
 import { NavbarLogInBtn, NavbarInputForm } from "./shared";
-import { useUser, useWishList } from "context";
+import { useCart, useUser, useWishList } from "context";
 
 /**
  * NavbarBadgeLink - component for badge link
  */
 const NavbarBadgeLink = ({ badgeIconType, className }) => {
   const { userState } = useUser();
+  const { cart } = useCart();
   const { wishlist } = useWishList();
 
   let wishlistCount = "0";
@@ -24,6 +25,16 @@ const NavbarBadgeLink = ({ badgeIconType, className }) => {
         : tempWishListCount > 9
         ? "9+"
         : String(tempWishListCount);
+  }
+
+  if (userState.isUserAuthTokenExist) {
+    let tempCartCount = cart.data?.length ?? 0;
+    cartCount =
+      tempCartCount > 99
+        ? "99+"
+        : tempCartCount > 9
+        ? "9+"
+        : String(tempCartCount);
   }
 
   const [url, linkFor, count] =

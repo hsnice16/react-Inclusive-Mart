@@ -1,32 +1,33 @@
-import { Link } from "react-router-dom";
-import { ROUTE_PRODUCTS, isStatusLoading, getEmptyArrayOfObjects } from "utils";
-import { useWishList } from "context";
+import { isStatusLoading, getEmptyArrayOfObjects } from "utils";
+import { useCart, useWishList } from "context";
 import { useDocumentTitle } from "custom-hooks";
-import { WishListHeading } from "./shared";
-import { NoProductsImg, ProductCard } from "components";
+import {
+  NoProductsImg,
+  ProductCard,
+  WishListCartHeading,
+  WishListCartPara,
+} from "components";
 
 const PrivateWishList = () => {
+  const { getCartFilteredData } = useCart();
   const { wishlist } = useWishList();
   const { status, data } = wishlist;
+  let filteredData = isStatusLoading(status) ? data : getCartFilteredData(data);
+
   useDocumentTitle(
     `My WishList (${isStatusLoading(status) ? "0" : data.length})`
   );
 
   return (
     <>
-      <WishListHeading
+      <WishListCartHeading
         headingText={`My WishList (${
           isStatusLoading(status) ? "0" : data.length
         })`}
       />
 
       {status === "success" && data.length <= 0 && (
-        <p className="fs-2 my-2 text-center">
-          No items in your WishList,{" "}
-          <Link to={ROUTE_PRODUCTS} className="link">
-            add now
-          </Link>
-        </p>
+        <WishListCartPara pageType="private" textToShow="WishList" />
       )}
 
       <ul className="flex flex-wrap gap-2p5 justify-c-ctr my-3 p-2">
@@ -38,8 +39,8 @@ const PrivateWishList = () => {
           ))}
 
         {status === "success" &&
-          (data.length > 0 ? (
-            data.map((details) => (
+          (filteredData.length > 0 ? (
+            filteredData.map((details) => (
               <li key={details._id}>
                 <ProductCard details={details} />
               </li>

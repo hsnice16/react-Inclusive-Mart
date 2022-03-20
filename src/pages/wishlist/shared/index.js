@@ -1,1 +1,0 @@
-export { WishListHeading } from "./WishListHeading";

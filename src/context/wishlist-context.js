@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext } from "react";
 import { useUser } from "./user-context";
 import { usePrivateAsync } from "custom-hooks";
 import { sharedInitialReducerState } from "reducer";
@@ -9,6 +9,7 @@ const WishListContext = createContext({
   dispatch: () => {},
   postPriavteData: () => {},
   deletePrivateData: () => {},
+  getWishListFilteredData: () => {},
 });
 
 const WishListProvider = ({ children }) => {
@@ -25,7 +26,7 @@ const WishListProvider = ({ children }) => {
         ? dataToFilter.map((product) =>
             isProductInWishList(product._id)
               ? { ...product, isInWishList: true }
-              : product
+              : { ...product, isInWishList: false }
           )
         : dataToFilter;
     }

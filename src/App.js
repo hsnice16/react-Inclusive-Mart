@@ -1,8 +1,17 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Footer, Header, RestrictRoute } from "components";
-import { Home, NotFound, Products, SignIn, SignUp, WishList } from "pages";
 import {
+  Cart,
+  Home,
+  NotFound,
+  Products,
+  SignIn,
+  SignUp,
+  WishList,
+} from "pages";
+import {
+  ROUTE_CART,
   ROUTE_HOME,
   ROUTE_PRODUCTS,
   ROUTE_SIGN_IN,
@@ -47,6 +56,7 @@ function App() {
         </Route>
 
         <Route path={ROUTE_WISHLIST} element={<WishList />} />
+        <Route path={ROUTE_CART} element={<Cart />} />
         <Route path="*" element={<NotFound />} />
 
         <Route path="/mockman-test" element={<Mockman />} />

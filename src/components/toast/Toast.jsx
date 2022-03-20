@@ -23,11 +23,11 @@ const Toast = ({ msg, type, handleToastClose }) => {
         </button>
       </div>
       <p className="toast-msg">
-        {type !== "public_wishlist" ? (
+        {!["public_cart", "public_wishlist"].includes(type) ? (
           msg
         ) : (
           <>
-            Want to add in WishList❓{" "}
+            Want to add in {msg}❓{" "}
             <Link className="toast-link link" to={ROUTE_SIGN_IN}>
               Log In
             </Link>{" "}

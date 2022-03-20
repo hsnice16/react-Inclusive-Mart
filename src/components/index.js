@@ -7,6 +7,8 @@ export { FormLabel } from "./auth-form/FormLabel";
 export { FormLink } from "./auth-form/form-link/FormLink";
 export { FormPasswordInput } from "./auth-form/form-password-input/FormPasswordInput";
 
+export { CartPriceCard } from "./card/cart-price-card/CartPriceCard";
+export { CartProductCard } from "./card/cart-product-card/CartProductCard";
 export { CategoryCard } from "./card/category-card/CategoryCard";
 export { ProductCard } from "./card/product-card/ProductCard";
 
@@ -21,3 +23,5 @@ export { FilterULHead } from "./products-filter-list/FilterULHead";
 
 export { RestrictRoute } from "./restrict-route/RestrictRoute";
 export { Toast } from "./toast/Toast";
+export { WishListCartHeading } from "./wishlist-cart/WishListCartHeading";
+export { WishListCartPara } from "./wishlist-cart/WishListCartPara";

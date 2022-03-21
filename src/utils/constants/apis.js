@@ -27,3 +27,8 @@ export const API_TO_GET_WISHLIST = {
   api: "/api/user/wishlist",
   propertyToGet: "wishlist",
 };
+
+export const API_TO_GET_CART = {
+  api: "/api/user/cart",
+  propertyToGet: "cart",
+};

@@ -16,6 +16,7 @@ import {
  * @returns an object {
  *  state,
  *  dispatch,
+ *  postIncrementCart,
  *  postPrivateData,
  *  deletePrivateData
  * }
@@ -67,8 +68,12 @@ const usePrivateAsync = (apiToCall) => {
       });
 
       handleAddMoreToasts({
-        msg: propertyToGet === "wishlist" ? "Added in Your WishList 🎉" : "",
-        type: propertyToGet === "wishlist" ? "private_wishlist" : "",
+        msg:
+          propertyToGet === "wishlist"
+            ? "Added in Your WishList 🎉"
+            : "Added in Your Cart 🎉",
+        type:
+          propertyToGet === "wishlist" ? "private_wishlist" : "private_cart",
       });
     } catch (error) {
       dispatch({
@@ -91,8 +96,46 @@ const usePrivateAsync = (apiToCall) => {
 
       handleAddMoreToasts({
         msg:
-          propertyToGet === "wishlist" ? "Removed from Your WishList 🎉" : "",
-        type: propertyToGet === "wishlist" ? "private_wishlist" : "",
+          propertyToGet === "wishlist"
+            ? "Removed from Your WishList 🎉"
+            : "Removed from Your Cart 🎉",
+        type:
+          propertyToGet === "wishlist" ? "private_wishlist" : "private_cart",
+      });
+    } catch (error) {
+      dispatch({
+        type: ACTION_TYPE_ERROR,
+        payload: error.message,
+      });
+    }
+  };
+
+  const postIncrementCart = async (id, type) => {
+    dispatch({ type: ACTION_TYPE_LOADING });
+
+    try {
+      const response = await axios.post(
+        `${api}/${id}`,
+        {
+          action: {
+            type,
+          },
+        },
+        config
+      );
+
+      dispatch({
+        type: ACTION_TYPE_SUCCESS,
+        payload: response.data[propertyToGet],
+      });
+
+      handleAddMoreToasts({
+        msg: `${
+          type === "increment"
+            ? "Added one more item in "
+            : "Removed one of the item from "
+        }  Your Cart 🎉`,
+        type: "private_cart",
       });
     } catch (error) {
       dispatch({
@@ -105,6 +148,7 @@ const usePrivateAsync = (apiToCall) => {
   const value = {
     state,
     dispatch,
+    postIncrementCart,
     postPrivateData,
     deletePrivateData,
   };

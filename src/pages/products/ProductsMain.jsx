@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { ProductsFilterList } from "./shared";
 import { NoProductsImg, ProductCard } from "components";
-import { useProducts, useWishList } from "context";
+import { useCart, useProducts, useWishList } from "context";
 import { getEmptyArrayOfObjects, isStatusLoading } from "utils";
 import { useFilteredData } from "custom-hooks";
 
 const ProductsMain = () => {
+  const { getCartFilteredData } = useCart();
   const { getWishListFilteredData } = useWishList();
   const { products } = useProducts();
   const { status } = products;
@@ -13,7 +14,7 @@ const ProductsMain = () => {
   let filteredData = useFilteredData();
   filteredData = isStatusLoading(status)
     ? filteredData
-    : getWishListFilteredData(filteredData);
+    : getCartFilteredData(getWishListFilteredData(filteredData));
 
   const [showMdFilter, setShowMdFilter] = useState(false);
   const [toggleMdFilter, setToggleMdFilter] = useState(false);

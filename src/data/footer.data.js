@@ -1,10 +1,7 @@
+import { createSearchParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import {
-  ROUTE_CART,
-  ROUTE_HOME,
-  ROUTE_PRODUCTS,
-  ROUTE_WISHLIST,
-} from "utils";
+import { ROUTE_CART, ROUTE_HOME, ROUTE_PRODUCTS, ROUTE_WISHLIST } from "utils";
+import { filterInitialReducerState } from "reducer";
 
 const FooterLinks = {
   pageLinks: [
@@ -16,7 +13,9 @@ const FooterLinks = {
     {
       _id: uuid(),
       linkFor: "Products",
-      url: ROUTE_PRODUCTS,
+      url: `${ROUTE_PRODUCTS}?${createSearchParams({
+        ...filterInitialReducerState,
+      })}`,
     },
     {
       _id: uuid(),

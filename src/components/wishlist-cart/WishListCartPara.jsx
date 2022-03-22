@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { createSearchParams, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { ROUTE_SIGN_IN, ROUTE_PRODUCTS } from "utils";
+import { filterInitialReducerState } from "reducer";
 
 const WishListCartPara = ({ pageType, textToShow }) => (
   <p className="fs-2 my-2 text-center">
@@ -16,7 +17,12 @@ const WishListCartPara = ({ pageType, textToShow }) => (
     {pageType === "private" && (
       <>
         No items in your {textToShow},{" "}
-        <Link to={ROUTE_PRODUCTS} className="link">
+        <Link
+          to={`${ROUTE_PRODUCTS}?${createSearchParams({
+            ...filterInitialReducerState,
+          })}`}
+          className="link"
+        >
           add now
         </Link>
       </>

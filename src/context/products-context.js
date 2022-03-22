@@ -11,6 +11,7 @@ import { API_TO_GET_ALL_PRODUCTS, getFilterStateFromSearchParams } from "utils";
 const ProductsContext = createContext({
   products: { ...sharedInitialReducerState, ...filterInitialReducerState },
   asyncDispatch: () => {},
+  filterState: { ...filterInitialReducerState },
   filterDispatch: () => {},
 });
 

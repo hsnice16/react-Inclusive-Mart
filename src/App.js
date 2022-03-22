@@ -14,6 +14,7 @@ import {
   ROUTE_CART,
   ROUTE_HOME,
   ROUTE_PRODUCTS,
+  ROUTE_ROOT,
   ROUTE_SIGN_IN,
   ROUTE_SIGN_UP,
   ROUTE_WISHLIST,
@@ -38,7 +39,7 @@ function App() {
       )}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path={ROUTE_ROOT} element={<Home />} />
         <Route path={ROUTE_HOME} element={<Home />} />
 
         <Route

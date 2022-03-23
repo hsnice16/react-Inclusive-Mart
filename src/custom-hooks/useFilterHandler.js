@@ -1,4 +1,4 @@
-import { createSearchParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useProducts } from "context";
 import {
   filterInitialReducerState,
@@ -28,12 +28,10 @@ const useFilterHandler = () => {
       payload: event.target.value,
     });
 
-    setSearchParams(
-      createSearchParams({
-        ...filterState,
-        filterByPriceRange: event.target.value,
-      })
-    );
+    setSearchParams({
+      ...filterState,
+      filterByPriceRange: event.target.value,
+    });
   };
 
   const handleSortByPriceRadioChange = (event) => {
@@ -42,9 +40,7 @@ const useFilterHandler = () => {
       payload: event.target.value,
     });
 
-    setSearchParams(
-      createSearchParams({ ...filterState, sortByPrice: event.target.value })
-    );
+    setSearchParams({ ...filterState, sortByPrice: event.target.value });
   };
 
   const handleRatingsCheckBoxChange = (event) => {
@@ -58,9 +54,7 @@ const useFilterHandler = () => {
       payload: data,
     });
 
-    setSearchParams(
-      createSearchParams({ ...filterState, filterByRatings: data })
-    );
+    setSearchParams({ ...filterState, filterByRatings: data });
   };
 
   const handleSubCategoryCheckBoxChange = (event) => {
@@ -74,9 +68,7 @@ const useFilterHandler = () => {
       payload: data,
     });
 
-    setSearchParams(
-      createSearchParams({ ...filterState, filterBySubCategories: data })
-    );
+    setSearchParams({ ...filterState, filterBySubCategories: data });
   };
 
   const handleCategoryRadioChange = (event) => {
@@ -85,12 +77,10 @@ const useFilterHandler = () => {
       payload: event.target.value,
     });
 
-    setSearchParams(
-      createSearchParams({
-        ...filterState,
-        filterByCategory: event.target.value,
-      })
-    );
+    setSearchParams({
+      ...filterState,
+      filterByCategory: event.target.value,
+    });
   };
 
   const handleResetBtnClick = () => {
@@ -99,7 +89,7 @@ const useFilterHandler = () => {
       payload: filterInitialReducerState,
     });
 
-    setSearchParams(createSearchParams(filterInitialReducerState));
+    setSearchParams(filterInitialReducerState);
   };
 
   const inputHandlers = {

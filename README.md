@@ -32,28 +32,28 @@ Give it a try today.
 
 ## 🚀 Features It has
 
-In **Navbar**
+From **Navbar**
 
-- You can navigate to the WishList and the Cart page, by selecting the respective icon
-- You can navigate to the Home page back, by clicking on the Inclusive Mart logo
-- Button to Log In and Log Out
+- navigate to the WishList/Cart page
+- navigate to the Home page back, click on the Inclusive Mart logo
+- Log In/Log Out
 
-  - To add items in your Cart and WishList, you have to Log In first. And if your new on Inclusive Mart then you have to Sign Up by following the Sign Up page link that has been provided on the Log In page
-  - And If you are logged in then you can log out by clicking on the Log Out button, Inclusive Mart will redirect you to the Home page
+  - Sign Up by following the link provided on the Log In page
 
-In **Footer**
+From **Footer**
 
-- You can navigate to all the pages that Inclusive Mart has.
-- You can connect with me on various social handles
+- navigate to all other pages of the Inclusive Mart
+- connect with me
 
-On **Home** Page
+From **Home**
 
-- You can select the category in which you want to buy, and then you will be redirected to the products page with the following category selected
-- You can add/remove Items in (or from) your WishList, or you can directly add Items in your Cart from the Shop Now Section
+- click on the Category in which you want to buy
+- add/remove Items in (or from) your WishList
+- add Items in your Cart
 
-On **Products** Page
+From **Products** Page
 
-- You can filter the products based on your preference. Inclusive Mart gives filter options for
+- filter the products based on your preference. Inclusive Mart gives filter options for
 
   - filter by Category
   - filter by Subcategory of the selected Category
@@ -61,21 +61,21 @@ On **Products** Page
   - Sort by Price
   - Slider to filter by Price Range
 
-- You can also share your filtered preference with your family and friends, by copying the address URL and then share it with your loved ones
-- You can also add items in your Cart and can add/remove the item in (or from) your WishList
+- share your filtered preference with your loved ones, by sharing the address URL
+- add/remove Items in (or from) your WishList
+- add Items in your Cart
 
-On **Cart** page
+From **Cart** page
 
-- To add items in your Cart, you have to Log In first
-- If you have logged in then you will see the list of the items that you have added to your Cart. You will also see the price card containing the total amount that you have to pay.
-- You can increase/decrease the quantity of an item
-- You can also remove the item from your Cart, or can add/remove the item in (or from) your WishList
+- see the price card, containing total amount that you have to pay.
+- increase/decrease the quantity of an item
+- add/remove Items in (or from) your WishList
+- remove Items from your Cart
 
-On **WishList** page
+From **WishList** page
 
-- To add items in your WishList, you have to Log In first
-- If you have logged in then you will see the list of the items that you have added to your WishList.
-- You can also add the item in your Cart, or can remove the item from your WishList
+- remove Items from your WishList 
+- add Items in your Cart
 
 ---
 

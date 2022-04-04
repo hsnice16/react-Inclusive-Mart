@@ -15,12 +15,12 @@ import {
 import { emptyCart } from "assets";
 
 const PrivateCart = () => {
-  const { getWishListFilteredData } = useWishList();
+  const { getWishListMappedData } = useWishList();
   const { cart } = useCart();
   const { status, data } = cart;
   let filteredData = isStatusLoading(status)
     ? data
-    : getWishListFilteredData(data);
+    : getWishListMappedData(data);
 
   useDocumentTitle(`My Cart (${isStatusLoading(status) ? "0" : data.length})`);
 

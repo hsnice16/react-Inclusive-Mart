@@ -9,10 +9,10 @@ import {
 } from "components";
 
 const PrivateWishList = () => {
-  const { getCartFilteredData } = useCart();
+  const { getCartMappedData } = useCart();
   const { wishlist } = useWishList();
   const { status, data } = wishlist;
-  let filteredData = isStatusLoading(status) ? data : getCartFilteredData(data);
+  let filteredData = isStatusLoading(status) ? data : getCartMappedData(data);
 
   useDocumentTitle(
     `My WishList (${isStatusLoading(status) ? "0" : data.length})`

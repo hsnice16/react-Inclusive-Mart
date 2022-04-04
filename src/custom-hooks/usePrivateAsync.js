@@ -67,14 +67,12 @@ const usePrivateAsync = (apiToCall) => {
         payload: response.data[propertyToGet],
       });
 
-      handleAddMoreToasts({
-        msg:
-          propertyToGet === "wishlist"
-            ? "Added in Your WishList 🎉"
-            : "Added in Your Cart 🎉",
-        type:
-          propertyToGet === "wishlist" ? "private_wishlist" : "private_cart",
-      });
+      const [msg, type] =
+        propertyToGet === "wishlist"
+          ? ["Added in Your WishList 🎉", "private_wishlist"]
+          : ["Added in Your Cart 🎉", "private_cart"];
+
+      handleAddMoreToasts({ msg, type });
     } catch (error) {
       dispatch({
         type: ACTION_TYPE_ERROR,
@@ -94,14 +92,12 @@ const usePrivateAsync = (apiToCall) => {
         payload: response.data[propertyToGet],
       });
 
-      handleAddMoreToasts({
-        msg:
-          propertyToGet === "wishlist"
-            ? "Removed from Your WishList 🎉"
-            : "Removed from Your Cart 🎉",
-        type:
-          propertyToGet === "wishlist" ? "private_wishlist" : "private_cart",
-      });
+      const [msg, type] =
+        propertyToGet === "wishlist"
+          ? ["Removed from Your WishList 🎉", "private_wishlist"]
+          : ["Removed from Your Cart 🎉", "private_cart"];
+
+      handleAddMoreToasts({ msg, type });
     } catch (error) {
       dispatch({
         type: ACTION_TYPE_ERROR,

@@ -12,6 +12,8 @@ export { CartProductCard } from "./card/cart-product-card/CartProductCard";
 export { CategoryCard } from "./card/category-card/CategoryCard";
 export { ProductCard } from "./card/product-card/ProductCard";
 
+export { Compose } from "./compose/Compose";
+
 export { Footer } from "./footer/Footer";
 export { Header } from "./header/Header";
 

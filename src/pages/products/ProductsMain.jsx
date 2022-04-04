@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ProductsFilterList } from "./shared";
 import { NoProductsImg, ProductCard } from "components";
 import { useCart, useProducts, useWishList } from "context";
@@ -6,30 +6,17 @@ import { getEmptyArrayOfObjects, isStatusLoading } from "utils";
 import { useFilteredData } from "custom-hooks";
 
 const ProductsMain = () => {
-  const { getCartFilteredData } = useCart();
-  const { getWishListFilteredData } = useWishList();
+  const { getCartMappedData } = useCart();
+  const { getWishListMappedData } = useWishList();
   const { products } = useProducts();
   const { status } = products;
 
   let filteredData = useFilteredData();
   filteredData = isStatusLoading(status)
     ? filteredData
-    : getCartFilteredData(getWishListFilteredData(filteredData));
+    : getCartMappedData(getWishListMappedData(filteredData));
 
-  const [showMdFilter, setShowMdFilter] = useState(false);
   const [toggleMdFilter, setToggleMdFilter] = useState(false);
-
-  useEffect(() => {
-    {
-      /* 640 = 40em in products.css */
-    }
-
-    if (window.innerWidth <= 640) {
-      setShowMdFilter(true);
-    } else {
-      setShowMdFilter(false);
-    }
-  }, [window.innerWidth]);
 
   const handleMdFilterToggling = () => {
     setToggleMdFilter((prevToggleValue) => !prevToggleValue);
@@ -44,18 +31,16 @@ const ProductsMain = () => {
         <i className="fas fa-filter"></i> Filter
       </button>
 
-      {showMdFilter && (
-        <div
-          className={`filter-md-container filter-md-position ${
-            toggleMdFilter ? "show-md-filter" : ""
-          }`}
-        >
-          <ProductsFilterList
-            forScreenSize="md"
-            handleMdFilterToggling={handleMdFilterToggling}
-          />
-        </div>
-      )}
+      <div
+        className={`filter-md-container filter-md-position ${
+          toggleMdFilter ? "show-md-filter" : ""
+        }`}
+      >
+        <ProductsFilterList
+          forScreenSize="md"
+          handleMdFilterToggling={handleMdFilterToggling}
+        />
+      </div>
 
       <section>
         <ul className="flex flex-wrap my-3">

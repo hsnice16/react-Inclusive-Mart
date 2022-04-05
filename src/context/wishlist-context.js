@@ -9,7 +9,7 @@ const WishListContext = createContext({
   dispatch: () => {},
   postPriavteData: () => {},
   deletePrivateData: () => {},
-  getWishListFilteredData: () => {},
+  getWishListMappedData: () => {},
 });
 
 const WishListProvider = ({ children }) => {
@@ -17,10 +17,10 @@ const WishListProvider = ({ children }) => {
   const { state: wishlist, ...methods } = usePrivateAsync(API_TO_GET_WISHLIST);
 
   const isProductInWishList = (productId) => {
-    return wishlist.data.filter(({ _id }) => _id === productId).length > 0;
+    return wishlist.data.some(({ _id }) => _id === productId);
   };
 
-  const getWishListFilteredData = (dataToFilter) => {
+  const getWishListMappedData = (dataToFilter) => {
     if (userState.isUserAuthTokenExist && wishlist.data) {
       return wishlist.data.length > 0
         ? dataToFilter.map((product) =>
@@ -34,7 +34,7 @@ const WishListProvider = ({ children }) => {
     return dataToFilter;
   };
 
-  const value = { wishlist, ...methods, getWishListFilteredData };
+  const value = { wishlist, ...methods, getWishListMappedData };
 
   return (
     <WishListContext.Provider value={value}>

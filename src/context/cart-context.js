@@ -9,7 +9,7 @@ const CartContext = createContext({
   dispatch: () => {},
   postPrivateData: () => {},
   deletePrivateData: () => {},
-  getCartFilteredData: () => {},
+  getCartMappedData: () => {},
 });
 
 const CartProvider = ({ children }) => {
@@ -17,10 +17,10 @@ const CartProvider = ({ children }) => {
   const { state: cart, ...methods } = usePrivateAsync(API_TO_GET_CART);
 
   const isProductInCart = (productId) => {
-    return cart.data.filter(({ _id }) => _id === productId).length > 0;
+    return cart.data.some(({ _id }) => _id === productId);
   };
 
-  const getCartFilteredData = (dataToFilter) => {
+  const getCartMappedData = (dataToFilter) => {
     if (userState.isUserAuthTokenExist && cart.data) {
       return cart.data.length > 0
         ? dataToFilter.map((product) =>
@@ -34,7 +34,7 @@ const CartProvider = ({ children }) => {
     return dataToFilter;
   };
 
-  const value = { cart, ...methods, getCartFilteredData };
+  const value = { cart, ...methods, getCartMappedData };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

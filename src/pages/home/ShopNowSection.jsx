@@ -13,11 +13,11 @@ const ShopNowSection = () => {
   const { state: products } = useAsync(API_TO_GET_HOME_PRODUCTS);
   let { data, status } = products;
 
-  const { getCartFilteredData } = useCart();
-  const { getWishListFilteredData } = useWishList();
+  const { getCartMappedData } = useCart();
+  const { getWishListMappedData } = useWishList();
   data = isStatusLoading(status)
     ? data
-    : getCartFilteredData(getWishListFilteredData(data));
+    : getCartMappedData(getWishListMappedData(data));
 
   return (
     <section className="py-2">

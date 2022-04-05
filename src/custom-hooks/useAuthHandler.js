@@ -120,7 +120,7 @@ const useAuthHandler = () => {
       } else {
         dispatch({
           type: ACTION_TYPE_ERROR,
-          payload: "Something Wrong Happened",
+          payload: error.message,
         });
       }
     }

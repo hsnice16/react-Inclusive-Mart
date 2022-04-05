@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import { BrowserRouter } from "react-router-dom";
-import { makeServer } from "server";
 import App from "App";
 import {
   CartProvider,
@@ -10,25 +10,27 @@ import {
   UserProvider,
   WishListProvider,
 } from "context";
+import { Compose } from "components";
+
+import { makeServer } from "server";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <ToastProvider>
-          <CategoryProvider>
-            <CartProvider>
-              <WishListProvider>
-                <App />
-              </WishListProvider>
-            </CartProvider>
-          </CategoryProvider>
-        </ToastProvider>
-      </UserProvider>
-    </BrowserRouter>
+    <Compose
+      components={[
+        BrowserRouter,
+        UserProvider,
+        ToastProvider,
+        CategoryProvider,
+        CartProvider,
+        WishListProvider,
+      ]}
+    >
+      <App />
+    </Compose>
   </React.StrictMode>,
   document.getElementById("root")
 );

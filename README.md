@@ -32,8 +32,36 @@ Give it a try today.
 
 ## 🚀 Features It has
 
+**Categories**
+
+- Clothing
+- Computers
+- Books
+- Gaming
+
+**Sub Categories**
+
+- Clothing
+
+  + T-Shirts
+  + Winter Wearing
+
+- Computers
+
+  + Laptop Accessories
+  + Tablet Accessories
+
+- Books
+ 
+  + Literatures Books
+
+- Gaming
+
+  + Gaming Accessories
+
 From **Navbar**
 
+- search by category / subcategory
 - navigate to the WishList/Cart page
 - navigate to the Home page back, click on the Inclusive Mart logo
 - Log In/Log Out
@@ -74,14 +102,14 @@ From **Cart** page
 
 From **WishList** page
 
-- remove Items from your WishList 
+- remove Items from your WishList
 - add Items in your Cart
 
 ---
 
 ## ✨ Features You will See in Future
 
-- Search for product functionality in **Navbar**
+- Place Your Order from **Cart**
 
 ---
 

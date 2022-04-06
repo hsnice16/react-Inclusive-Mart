@@ -30,6 +30,7 @@ const useFilterHandler = () => {
 
     setSearchParams({
       ...filterState,
+      searchFor: "",
       filterByPriceRange: event.target.value,
     });
   };
@@ -40,7 +41,11 @@ const useFilterHandler = () => {
       payload: event.target.value,
     });
 
-    setSearchParams({ ...filterState, sortByPrice: event.target.value });
+    setSearchParams({
+      ...filterState,
+      searchFor: "",
+      sortByPrice: event.target.value,
+    });
   };
 
   const handleRatingsCheckBoxChange = (event) => {
@@ -54,7 +59,7 @@ const useFilterHandler = () => {
       payload: data,
     });
 
-    setSearchParams({ ...filterState, filterByRatings: data });
+    setSearchParams({ ...filterState, searchFor: "", filterByRatings: data });
   };
 
   const handleSubCategoryCheckBoxChange = (event) => {
@@ -68,7 +73,11 @@ const useFilterHandler = () => {
       payload: data,
     });
 
-    setSearchParams({ ...filterState, filterBySubCategories: data });
+    setSearchParams({
+      ...filterState,
+      searchFor: "",
+      filterBySubCategories: data,
+    });
   };
 
   const handleCategoryRadioChange = (event) => {
@@ -79,6 +88,8 @@ const useFilterHandler = () => {
 
     setSearchParams({
       ...filterState,
+      searchFor: "",
+
       filterByCategory: event.target.value,
     });
   };

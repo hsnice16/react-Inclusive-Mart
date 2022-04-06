@@ -168,10 +168,20 @@ const useAuthHandler = () => {
     }
   };
 
+  const handleGuestLogInClick = (event) => {
+    event.preventDefault();
+
+    callAuthAPI(API_TO_POST_SIGN_IN_DETAILS, {
+      email: "johndoe@gmail.com",
+      password: "johnDoe123",
+    });
+  };
+
   const authHandlers = {
     handleInputChange,
     handleSignUpFormSubmit,
     handleSignInFormSubmit,
+    handleGuestLogInClick,
   };
 
   return { ...authState, ...authHandlers };

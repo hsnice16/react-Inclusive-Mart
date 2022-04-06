@@ -4,6 +4,7 @@ import {
   ACTION_TYPE_FILTER_BY_RATINGS,
   ACTION_TYPE_FILTER_BY_PRICE_RANGE,
   ACTION_TYPE_RESET_FILTER,
+  ACTION_TYPE_SEARCH_FOR,
   ACTION_TYPE_SORT_BY_PRICE,
 } from "../index";
 
@@ -27,6 +28,9 @@ const filterReducer = (state, action) => {
 
     case ACTION_TYPE_RESET_FILTER:
       return { ...action.payload };
+
+    case ACTION_TYPE_SEARCH_FOR:
+      return { ...state, searchFor: action.payload };
 
     case ACTION_TYPE_SORT_BY_PRICE:
       return { ...state, sortByPrice: action.payload };

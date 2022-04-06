@@ -59,7 +59,10 @@ const ProductsMain = () => {
                 </li>
               ))
             ) : (
-              <NoProductsImg />
+              <div className="w-100pct">
+                <NoProductsImg />
+                <h1 className="mt-2 text-center">No Products Found</h1>
+              </div>
             ))}
         </ul>
       </section>

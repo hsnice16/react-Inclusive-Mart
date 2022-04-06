@@ -26,6 +26,7 @@ const SignIn = () => {
     rememberMe,
     handleInputChange,
     handleSignInFormSubmit,
+    handleGuestLogInClick,
   } = useAuthHandler();
 
   return (
@@ -85,6 +86,11 @@ const SignIn = () => {
           </div>
 
           <FormButton buttonText="Log In" status={status} />
+          <FormButton
+            buttonText="Log In as a Guest"
+            status={status}
+            onClick={handleGuestLogInClick}
+          />
           <FormLink
             linkTo={ROUTE_SIGN_UP}
             linkText="New on Inclusive Mart? Sign Up"

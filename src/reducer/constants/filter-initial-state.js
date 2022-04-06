@@ -3,6 +3,7 @@ const filterInitialReducerState = {
   filterBySubCategories: [""],
   filterByRatings: [""],
   filterByPriceRange: "0",
+  searchFor: "",
   sortByPrice: "",
 };
 

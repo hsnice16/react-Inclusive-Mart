@@ -5,22 +5,11 @@ jobs:
     name: Run all the unit tests of this repo
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-        
-    permissions:
-        checks: write
-        pull-requests: write
-        contents: read
-
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - uses: ArtiomTr/jest-coverage-report-action@v2
-      - run: npm ci
+          node-version: 14.x
       - run: npm run build --if-present
-      - run: npm test
+      - run: npm ci:test

@@ -18,6 +18,3 @@ describe("testing authReducer", () => {
     expect(state).toEqual(expectedState);
   });
 });
-
-// with:
-//           test-script: npm run ci:test

@@ -18,3 +18,5 @@ jobs:
           node-version: 14.x
       - name: Jest coverage report
         uses: ArtiomTr/jest-coverage-report-action@v2.0.8
+        with:
+          test-script: npm run ci:test

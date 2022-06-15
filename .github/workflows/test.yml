@@ -5,6 +5,11 @@ jobs:
     name: Run all the unit tests of this repo
     runs-on: ubuntu-latest
 
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+
     steps:
       - uses: actions/checkout@v3
       - name: Jest coverage report

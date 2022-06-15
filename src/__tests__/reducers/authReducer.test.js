@@ -18,3 +18,15 @@ describe("testing authReducer", () => {
     expect(state).toEqual(expectedState);
   });
 });
+
+// "jest": {
+//   "collectCoverageFrom": [
+//     "src/utils/functions/**",
+//     "src/reducer/functions/**"
+//   ],
+//   "coverageThreshold": {
+//     "global": {
+//       "lines": 90
+//     }
+//   }
+// },

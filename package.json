@@ -28,17 +28,6 @@
     "ci:test": "react-scripts test -- --coverage",
     "eject": "react-scripts eject"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/utils/functions/**",
-      "src/reducer/functions/**"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "lines": 90
-      }
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",

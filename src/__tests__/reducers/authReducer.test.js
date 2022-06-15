@@ -30,3 +30,10 @@ describe("testing authReducer", () => {
 //     }
 //   }
 // },
+
+// - name: Use Node.js 14.x
+// uses: actions/setup-node@v3
+// with:
+//   node-version: 14.x
+// - run: npm ci
+// - run: npm run build --if-present

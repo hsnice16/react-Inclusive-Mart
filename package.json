@@ -30,7 +30,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/utils/functions/**"
+      "src/utils/functions/**",
+      "src/reducer/functions/**"
     ],
     "coverageThreshold": {
       "global": {

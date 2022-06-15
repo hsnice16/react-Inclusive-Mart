@@ -19,27 +19,5 @@ describe("testing authReducer", () => {
   });
 });
 
-// "jest": {
-//   "collectCoverageFrom": [
-//     "src/utils/functions/**",
-//     "src/reducer/functions/**"
-//   ],
-//   "coverageThreshold": {
-//     "global": {
-//       "lines": 90
-//     }
-//   }
-// },
-
-// - uses: actions/checkout@v3
-// - name: Use Node.js 14.x
-//   uses: actions/setup-node@v3
-//   with:
-//     node-version: 14.x
-
-// - name: Use Node.js 14.x
-// uses: actions/setup-node@v3
 // with:
-//   node-version: 14.x
-// - run: npm ci
-// - run: npm run build --if-present
+//           test-script: npm run ci:test

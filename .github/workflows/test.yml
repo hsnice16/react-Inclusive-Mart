@@ -9,12 +9,8 @@ jobs:
       checks: write
       pull-requests: write
       contents: read
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v1
+      - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          node-version: 14.x
-      - name: Jest coverage report
-        uses: ArtiomTr/jest-coverage-report-action@v2.0.8
+          test-script: npm run ci:test

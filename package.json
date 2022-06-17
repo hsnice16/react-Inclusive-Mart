@@ -25,12 +25,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll",
-    "ci:test": "react-scripts test -- --coverage || exit 0",
     "eject": "react-scripts eject"
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/utils/functions/**"
+      "src/utils/functions/**",
+      "src/reducer/functions/**"
     ],
     "coverageThreshold": {
       "global": {

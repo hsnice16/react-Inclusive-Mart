@@ -43,21 +43,21 @@ Give it a try today.
 
 - Clothing
 
-  + T-Shirts
-  + Winter Wearing
+  - T-Shirts
+  - Winter Wearing
 
 - Computers
 
-  + Laptop Accessories
-  + Tablet Accessories
+  - Laptop Accessories
+  - Tablet Accessories
 
 - Books
- 
-  + Literatures Books
+
+  - Literatures Books
 
 - Gaming
 
-  + Gaming Accessories
+  - Gaming Accessories
 
 From **Navbar**
 
@@ -105,11 +105,19 @@ From **WishList** page
 - remove Items from your WishList
 - add Items in your Cart
 
+For **Developers**
+
+- unit tests for
+
+  - utils functions
+  - reducers
+
 ---
 
 ## ✨ Features You will See in Future
 
 - Place Your Order from **Cart**
+- Working of **Forgot Password**
 
 ---
 

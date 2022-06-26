@@ -117,7 +117,7 @@ For **Developers**
 ## ✨ Features You will See in Future
 
 - Place Your Order from **Cart**
-- Working of **Forgot Password**
+<!-- - Working of **Forgot Password** -->
 
 ---
 

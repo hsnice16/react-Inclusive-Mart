@@ -77,12 +77,14 @@ const SignIn = () => {
               Remember me
             </label>
 
-            <Link
+            {/* future feature */}
+
+            {/* <Link
               className="fs-1p5 fw-bold text-slate-600 text-slate-800-hover"
               to="#"
             >
               Forgot Password?
-            </Link>
+            </Link> */}
           </div>
 
           <FormButton buttonText="Log In" status={status} />
